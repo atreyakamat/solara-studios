@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #6211d4;
+  --primary-hover: #4f0eb0;
+  --background: #141118;
+  --background-light: #201c27;
+  --border: #453b54;
+  --text: #a89db9;
+}
+
+@layer base {
+  html {
+    @apply antialiased;
+  }
+
+  body {
+    @apply m-0 bg-[#141118] text-white;
+    font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply rounded-full bg-[#6211d4] px-6 py-2 text-sm font-bold text-white transition-colors hover:bg-[#4f0eb0];
+  }
+
+  .btn-secondary {
+    @apply rounded-full bg-[#2f2839] px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-[#453b54];
+  }
+
+  .card {
+    @apply flex flex-col gap-4 rounded-lg border border-[#453b54] bg-[#201c27] p-6;
+  }
+
+  .card-icon {
+    @apply flex h-12 w-12 items-center justify-center rounded-lg bg-[#6211d4];
+  }
+
+  .heading-1 {
+    @apply text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl;
+  }
+
+  .heading-2 {
+    @apply text-3xl font-bold text-white;
+  }
+
+  .heading-3 {
+    @apply text-xl font-bold text-white;
+  }
+
+  .text-body {
+    @apply text-base text-[#a89db9] leading-relaxed;
+  }
+} 
