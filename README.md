@@ -1,69 +1,48 @@
-# React + TypeScript + Vite
+# 🌌 Solara Studios — The Future of Digital Experiences
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the **official repository of Solara Studios**, a cutting-edge creative tech agency on a mission to design **AI-driven**, **automation-first**, and **visually immersive** digital experiences for tomorrow’s businesses.
 
-Currently, two official plugins are available:
+## 🚀 Our Vision
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+To empower startups and businesses with futuristic, scalable, and beautifully crafted digital platforms that go beyond ordinary websites — enabling true **digital transformation**.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🌐 Live Demo
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+👉 Coming Soon: [https://solarastudios.com](https://solarastudios.com)
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🧠 Tech Stack
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+| Feature                        | Stack / Library                             |
+|-------------------------------|---------------------------------------------|
+| Frontend Framework            | [Next.js](https://nextjs.org/)              |
+| Styling                       | [Tailwind CSS](https://tailwindcss.com/) + [Shadcn/UI](https://ui.shadcn.com/) |
+| Animations & UX               | [Framer Motion](https://www.framer.com/motion/) + [Lottie](https://lottiefiles.com/) |
+| 3D / Interactive Experience   | [Three.js](https://threejs.org/), [Spline](https://spline.design/) |
+| Forms & Validation            | React Hook Form + Zod                       |
+| AI Integrations               | OpenAI API, Replicate API                   |
+| Deployment                    | Vercel / Netlify                            |
+| Version Control               | Git + GitHub                                |
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🖼️ Project Structure
+
+```bash
+/solara-studios/
+├── public/              # Static assets (images, icons, etc.)
+├── src/
+│   ├── components/      # Reusable UI components
+│   ├── pages/           # Route-based pages (Next.js)
+│   ├── layout/          # Layout components (Navbar, Footer)
+│   ├── styles/          # Tailwind config & global CSS
+│   ├── utils/           # Helper functions
+│   ├── hooks/           # Custom React hooks
+│   └── App.jsx          # Entry point
+├── tailwind.config.js   # Tailwind configuration
+├── next.config.js       # Next.js configuration
+├── package.json         # NPM scripts and dependencies
+└── README.md            # This file
