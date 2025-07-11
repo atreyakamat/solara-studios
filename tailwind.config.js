@@ -15,7 +15,14 @@ module.exports = {
         'text-tertiary': '#ffffffcc',
         'border-color': '#2d2938',
       },
+      fontFamily: {
+        'space-grotesk': ['Space Grotesk', 'system-ui', 'sans-serif'],
+        'manrope': ['Manrope', 'Noto Sans', 'sans-serif'],
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/container-queries'),
+    require('@tailwindcss/forms'),
+  ],
 }

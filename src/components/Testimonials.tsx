@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StarIcon } from './Icons';
+import Icons from './Icons';
 
 interface Testimonial {
   name: string;
@@ -78,7 +78,7 @@ const TestimonialCard: React.FC<Testimonial & { isActive: boolean; onClick: () =
       <div className="mb-4">
         <div className="flex gap-1">
           {[...Array(rating)].map((_, i) => (
-            <StarIcon key={i} />
+            <Icons key={i} name="Star" size="20px" className="text-yellow-400" />
           ))}
         </div>
       </div>

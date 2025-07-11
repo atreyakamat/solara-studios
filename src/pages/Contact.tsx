@@ -1,171 +1,195 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const Contact: React.FC = () => {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    message: '',
+    service: 'ai-development'
   });
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState("");
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-    setError("");
-  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Basic validation
-    if (!form.name || !form.email || !form.subject || !form.message) {
-      setError("Please fill in all fields.");
-      return;
-    }
-    setSubmitted(true);
-    // Here you would send the form data to your backend or email service
-    // Reset form (optional)
-    setForm({ name: "", email: "", subject: "", message: "" });
+    // Handle form submission
+    console.log('Form submitted:', formData);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
   };
 
   return (
     <div className="relative flex min-h-screen flex-col bg-[#141118] dark group/design-root overflow-x-hidden" style={{ fontFamily: 'Space Grotesk, Noto Sans, sans-serif' }}>
       <div className="layout-container flex h-full grow flex-col">
-        <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#2f2839] px-10 py-3">
-          <div className="flex items-center gap-4 text-white">
-            <div className="size-4">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M12.0799 24L4 19.2479L9.95537 8.75216L18.04 13.4961L18.0446 4H29.9554L29.96 13.4961L38.0446 8.75216L44 19.2479L35.92 24L44 28.7521L38.0446 39.2479L29.96 34.5039L29.9554 44H18.0446L18.04 34.5039L9.95537 39.2479L4 28.7521L12.0799 24Z"
-                  fill="currentColor"
-                />
-              </svg>
+        <div className="flex flex-1 flex-col items-center w-full bg-transparent">
+          <div className="w-full max-w-6xl mx-auto px-4 py-16">
+            {/* Hero Section */}
+            <div className="text-center mb-16">
+              <h1 className="text-4xl md:text-5xl font-black text-white mb-6">Get in Touch</h1>
+              <p className="text-white/80 text-lg max-w-3xl mx-auto">
+                Ready to transform your business with AI and automation? Let's discuss your project and explore how we can help you achieve your goals.
+              </p>
             </div>
-            <h2 className="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Solara Studios</h2>
-          </div>
-          <div className="flex flex-1 justify-end gap-8">
-            <div className="flex items-center gap-9">
-              <a className="text-white text-sm font-medium leading-normal" href="#">Services</a>
-              <a className="text-white text-sm font-medium leading-normal" href="#">Case Studies</a>
-              <a className="text-white text-sm font-medium leading-normal" href="#">About Us</a>
-            </div>
-            <button
-              className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#6211d4] text-white text-sm font-bold leading-normal tracking-[0.015em]"
-            >
-              <span className="truncate">Get Started</span>
-            </button>
-          </div>
-        </header>
-        <div className="px-40 flex flex-1 justify-center py-5">
-          <div className="layout-content-container flex flex-col max-w-[960px] flex-1">
-            <div className="flex flex-wrap justify-between gap-3 p-4">
-              <div className="flex min-w-72 flex-col gap-3">
-                <p className="text-white tracking-light text-[32px] font-bold leading-tight">Contact Us</p>
-                <p className="text-[#a89db9] text-sm font-normal leading-normal">
-                  We're here to help you navigate the future of business. Reach out to us through any of the channels below, and let's start a conversation about how Solara Studios
-                  can transform your operations with AI and automation.
-                </p>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              {/* Contact Form */}
+              <div className="bg-[#1f1c26] rounded-xl p-8 border border-[#433c53]">
+                <h2 className="text-2xl font-bold text-white mb-6">Send us a Message</h2>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
+                    <label htmlFor="name" className="block text-white font-medium mb-2">Name</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-[#2d2938] border border-[#433c53] rounded-lg text-white placeholder-[#a89db8] focus:border-[#6211d4] focus:outline-none transition-colors"
+                      placeholder="Your full name"
+                      required
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="email" className="block text-white font-medium mb-2">Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-[#2d2938] border border-[#433c53] rounded-lg text-white placeholder-[#a89db8] focus:border-[#6211d4] focus:outline-none transition-colors"
+                      placeholder="your.email@company.com"
+                      required
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="company" className="block text-white font-medium mb-2">Company</label>
+                    <input
+                      type="text"
+                      id="company"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-[#2d2938] border border-[#433c53] rounded-lg text-white placeholder-[#a89db8] focus:border-[#6211d4] focus:outline-none transition-colors"
+                      placeholder="Your company name"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="service" className="block text-white font-medium mb-2">Service Interest</label>
+                    <select
+                      id="service"
+                      name="service"
+                      value={formData.service}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-[#2d2938] border border-[#433c53] rounded-lg text-white focus:border-[#6211d4] focus:outline-none transition-colors"
+                    >
+                      <option value="ai-development">AI Development</option>
+                      <option value="process-automation">Process Automation</option>
+                      <option value="data-analytics">Data Analytics</option>
+                      <option value="ai-consulting">AI Consulting</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="message" className="block text-white font-medium mb-2">Message</label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      rows={5}
+                      className="w-full px-4 py-3 bg-[#2d2938] border border-[#433c53] rounded-lg text-white placeholder-[#a89db8] focus:border-[#6211d4] focus:outline-none transition-colors resize-none"
+                      placeholder="Tell us about your project and how we can help..."
+                      required
+                    />
+                  </div>
+                  
+                  <button
+                    type="submit"
+                    className="w-full bg-[#6211d4] hover:bg-[#4f0eb0] text-white py-3 rounded-lg font-bold transition-colors"
+                  >
+                    Send Message
+                  </button>
+                </form>
               </div>
-            </div>
-            <form onSubmit={handleSubmit}>
-              <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                <label className="flex flex-col min-w-40 flex-1">
-                  <input
-                    name="name"
-                    placeholder="Your Name"
-                    className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-white focus:outline-0 focus:ring-0 border-none bg-[#2f2839] focus:border-none h-14 placeholder:text-[#a89db9] p-4 text-base font-normal leading-normal"
-                    value={form.name}
-                    onChange={handleChange}
-                  />
-                </label>
+
+              {/* Contact Information */}
+              <div className="space-y-8">
+                <div>
+                  <h2 className="text-2xl font-bold text-white mb-6">Contact Information</h2>
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 bg-[#6211d4] rounded-lg flex items-center justify-center">
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <h3 className="text-white font-semibold">Email</h3>
+                        <p className="text-[#a89db8]">hello@solara-studios.com</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 bg-[#6211d4] rounded-lg flex items-center justify-center">
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <h3 className="text-white font-semibold">Phone</h3>
+                        <p className="text-[#a89db8]">+1 (555) 123-4567</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 bg-[#6211d4] rounded-lg flex items-center justify-center">
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <h3 className="text-white font-semibold">Location</h3>
+                        <p className="text-[#a89db8]">San Francisco, CA<br />United States</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Business Hours */}
+                <div className="bg-[#1f1c26] rounded-xl p-6 border border-[#433c53]">
+                  <h3 className="text-xl font-bold text-white mb-4">Business Hours</h3>
+                  <div className="space-y-2 text-[#a89db8]">
+                    <div className="flex justify-between">
+                      <span>Monday - Friday</span>
+                      <span>9:00 AM - 6:00 PM PST</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Saturday</span>
+                      <span>10:00 AM - 4:00 PM PST</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Sunday</span>
+                      <span>Closed</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Response Time */}
+                <div className="bg-gradient-to-r from-[#2d1a4a] to-[#1a1620] rounded-xl p-6">
+                  <h3 className="text-xl font-bold text-white mb-2">Response Time</h3>
+                  <p className="text-[#a89db8]">We typically respond to all inquiries within 24 hours during business days.</p>
+                </div>
               </div>
-              <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                <label className="flex flex-col min-w-40 flex-1">
-                  <input
-                    name="email"
-                    type="email"
-                    placeholder="Your Email"
-                    className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-white focus:outline-0 focus:ring-0 border-none bg-[#2f2839] focus:border-none h-14 placeholder:text-[#a89db9] p-4 text-base font-normal leading-normal"
-                    value={form.email}
-                    onChange={handleChange}
-                  />
-                </label>
-              </div>
-              <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                <label className="flex flex-col min-w-40 flex-1">
-                  <input
-                    name="subject"
-                    placeholder="Subject"
-                    className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-white focus:outline-0 focus:ring-0 border-none bg-[#2f2839] focus:border-none h-14 placeholder:text-[#a89db9] p-4 text-base font-normal leading-normal"
-                    value={form.subject}
-                    onChange={handleChange}
-                  />
-                </label>
-              </div>
-              <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                <label className="flex flex-col min-w-40 flex-1">
-                  <textarea
-                    name="message"
-                    placeholder="Your Message"
-                    className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-white focus:outline-0 focus:ring-0 border-none bg-[#2f2839] focus:border-none min-h-36 placeholder:text-[#a89db9] p-4 text-base font-normal leading-normal"
-                    value={form.message}
-                    onChange={handleChange}
-                  />
-                </label>
-              </div>
-              {error && <div className="text-red-400 px-4 py-2">{error}</div>}
-              {submitted && <div className="text-green-400 px-4 py-2">Thank you for contacting us!</div>}
-              <div className="flex px-4 py-3 justify-start">
-                <button
-                  type="submit"
-                  className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#6211d4] text-white text-sm font-bold leading-normal tracking-[0.015em]"
-                >
-                  <span className="truncate">Send Message</span>
-                </button>
-              </div>
-            </form>
-            <h2 className="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Other Ways to Connect</h2>
-            <div className="flex items-center gap-4 bg-[#141118] px-4 min-h-[72px] py-2">
-              <div className="text-white flex items-center justify-center rounded-lg bg-[#2f2839] shrink-0 size-12" data-icon="Envelope" data-size="24px" data-weight="regular">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                  <path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48Zm-96,85.15L52.57,64H203.43ZM98.71,128,40,181.81V74.19Zm11.84,10.85,12,11.05a8,8,0,0,0,10.82,0l12-11.05,58,53.15H52.57ZM157.29,128,216,74.18V181.82Z" />
-                </svg>
-              </div>
-              <div className="flex flex-col justify-center">
-                <p className="text-white text-base font-medium leading-normal line-clamp-1">Email</p>
-                <p className="text-[#a89db9] text-sm font-normal leading-normal line-clamp-2">contact@solarastudios.com</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4 bg-[#141118] px-4 min-h-[72px] py-2">
-              <div className="text-white flex items-center justify-center rounded-lg bg-[#2f2839] shrink-0 size-12" data-icon="Phone" data-size="24px" data-weight="regular">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                  <path d="M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46ZM176,208A128.14,128.14,0,0,1,48,80,40.2,40.2,0,0,1,82.87,40a.61.61,0,0,0,0,.12l21,47L83.2,111.86a6.13,6.13,0,0,0-.57.77,16,16,0,0,0-1,15.7c9.06,18.53,27.73,37.06,46.46,46.11a16,16,0,0,0,15.75-1.14,8.44,8.44,0,0,0,.74-.56L168.89,152l47,21.05h0s.08,0,.11,0A40.21,40.21,0,0,1,176,208Z" />
-                </svg>
-              </div>
-              <div className="flex flex-col justify-center">
-                <p className="text-white text-base font-medium leading-normal line-clamp-1">Phone</p>
-                <p className="text-[#a89db9] text-sm font-normal leading-normal line-clamp-2">+1 (555) 123-4567</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4 bg-[#141118] px-4 min-h-[72px] py-2">
-              <div className="text-white flex items-center justify-center rounded-lg bg-[#2f2839] shrink-0 size-12" data-icon="WhatsappLogo" data-size="24px" data-weight="regular">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                  <path d="M187.58,144.84l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88,40,40,0,0,0,40-40A8,8,0,0,0,187.58,144.84ZM152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155l14.61-9.74,23,11.48A24,24,0,0,1,152,176ZM128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z" />
-                </svg>
-              </div>
-              <div className="flex flex-col justify-center">
-                <p className="text-white text-base font-medium leading-normal line-clamp-1">WhatsApp</p>
-                <p className="text-[#a89db9] text-sm font-normal leading-normal line-clamp-2">Chat with us instantly</p>
-              </div>
-            </div>
-            <h2 className="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Our Location</h2>
-            <div className="flex px-4 py-3">
-              <div
-                className="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl object-cover"
-                style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuAwPH_I-AH-Nrbonb_oGSyUZuTrt-Tw2MMxiZi9GHQMFRP7mzpt0jTVbEyzTFmOwBYnl9CXkQffxEOvKrQkQudA6TZY81SjcQ2QoM5A0Joqsl6UVIbO286YlEkCX7Z5kvslrRcY24wqIl_L0kFzT8oyWo03yHDPRUKCeKN6BhQHTEFxKkBPOKJperBwVMw5844U_y-8_Kr_KP-n62AB1S27CbeuJfxRo5UdGR4AAGDtTPFBAJRz4iMajREWkr-XX6QHvL3ErVaEVCeK")' }}
-              ></div>
             </div>
           </div>
         </div>
