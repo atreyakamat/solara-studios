@@ -1,22 +1,19 @@
 import React from 'react';
-import { Globe } from './Globe';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-[500px] w-full py-12 px-4 overflow-hidden">
-      {/* Globe background */}
-      <div className="absolute inset-0 w-full h-full flex items-center justify-center pointer-events-none z-0">
-        <Globe className="opacity-40 scale-150" />
-      </div>
+    <section className="relative flex flex-col items-center justify-center min-h-screen w-full py-16 px-4 overflow-hidden">
+      {/* Simple gradient background instead of Globe */}
+      <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-[#6211d4]/40 to-[#0f172a]/80 pointer-events-none z-0" />
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-2xl mx-auto gap-6 text-center">
-        <h1 className="text-white text-4xl md:text-5xl font-black leading-tight tracking-[-0.033em]">
+      <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-2xl mx-auto gap-8 text-center">
+        <h1 className="text-white text-5xl md:text-6xl font-black leading-tight tracking-[-0.033em]">
           Empowering Businesses with AI-Driven Automation
         </h1>
-        <p className="text-white/90 text-base md:text-lg font-normal leading-relaxed">
+        <p className="text-white/90 text-lg md:text-xl font-normal leading-relaxed">
           Solara Studios delivers cutting-edge AI and automation solutions, transforming your business for the future. Our innovative strategies and bespoke implementations drive efficiency, reduce costs, and unlock new growth opportunities.
         </p>
-        <button className="flex items-center justify-center rounded-full bg-[#6211d4] px-8 py-3 text-base font-bold text-white hover:bg-[#4f0eb0] transition-colors mt-2">
+        <button className="flex items-center justify-center rounded-full bg-[#6211d4] px-10 py-4 text-lg font-bold text-white hover:bg-[#4f0eb0] transition-colors mt-2">
           Explore Our Solutions
         </button>
       </div>

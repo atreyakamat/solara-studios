@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleDropdownToggle = (dropdown: string) => {
     setActiveDropdown(activeDropdown === dropdown ? null : dropdown);
@@ -29,6 +30,7 @@ const Navbar: React.FC = () => {
           <span className="text-lg font-bold text-white">Solara Studios</span>
         </Link>
 
+        {/* Desktop nav */}
         <nav className="hidden items-center gap-8 md:flex" onMouseLeave={handleMouseLeave}>
           {/* Home Dropdown */}
           <div className="relative">
@@ -231,17 +233,40 @@ const Navbar: React.FC = () => {
           </Link>
         </nav>
 
-        <div className="flex items-center gap-3">
-          <Link to="/contact" className="hidden rounded-full bg-[#6211d4] px-6 py-2 text-sm font-bold text-white hover:bg-[#4f0eb0] transition-colors md:block">
-            Get Started
-          </Link>
-          <button className="flex h-10 w-10 items-center justify-center rounded-full bg-[#2f2839] text-white hover:bg-[#453b54] transition-colors md:hidden">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
-        </div>
+        {/* Mobile hamburger */}
+        <button
+          className="md:hidden flex items-center justify-center p-2 rounded focus:outline-none focus:ring-2 focus:ring-[#6211d4]"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Open menu"
+        >
+          <svg className="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
       </div>
+      {/* Mobile menu drawer */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-40 bg-black/60 md:hidden" onClick={() => setMobileMenuOpen(false)}>
+          <div className="absolute top-0 right-0 w-64 h-full bg-[#1f1c26] shadow-lg p-6 flex flex-col gap-6" onClick={e => e.stopPropagation()}>
+            <button
+              className="self-end mb-4 p-2 rounded focus:outline-none focus:ring-2 focus:ring-[#6211d4]"
+              onClick={() => setMobileMenuOpen(false)}
+              aria-label="Close menu"
+            >
+              <svg className="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <Link to="/" className="text-white text-lg font-bold" onClick={() => setMobileMenuOpen(false)}>Home</Link>
+            <Link to="/about" className="text-white text-lg font-bold" onClick={() => setMobileMenuOpen(false)}>About Us</Link>
+            <Link to="/services" className="text-white text-lg font-bold" onClick={() => setMobileMenuOpen(false)}>Services</Link>
+            <Link to="/case-studies" className="text-white text-lg font-bold" onClick={() => setMobileMenuOpen(false)}>Case Studies</Link>
+            <Link to="/pricing" className="text-white text-lg font-bold" onClick={() => setMobileMenuOpen(false)}>Pricing</Link>
+            <Link to="/consultation" className="text-white text-lg font-bold" onClick={() => setMobileMenuOpen(false)}>Consultation</Link>
+            <Link to="/contact" className="text-white text-lg font-bold" onClick={() => setMobileMenuOpen(false)}>Contact</Link>
+          </div>
+        </div>
+      )}
     </header>
   );
 };

@@ -3,7 +3,7 @@
 import createGlobe from "cobe";
 import type { COBEOptions } from "cobe";
 import { useMotionValue, useSpring } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { cn } from "../lib/utils";
 
@@ -49,6 +49,28 @@ export function Globe({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pointerInteracting = useRef<number | null>(null);
   const pointerInteractionMovement = useRef(0);
+  const [isVisible, setIsVisible] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Pause animation when offscreen
+  useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    if (canvasRef.current) observer.observe(canvasRef.current);
+    return () => {
+      if (canvasRef.current) observer.unobserve(canvasRef.current);
+    };
+  }, []);
 
   const r = useMotionValue(0);
   const rs = useSpring(r, {
@@ -82,15 +104,26 @@ export function Globe({
     window.addEventListener("resize", onResize);
     onResize();
 
+    // Adjust config for mobile
+    const mobileConfig = isMobile
+      ? {
+          ...config,
+          width: 300,
+          height: 300,
+          devicePixelRatio: 1,
+          mapSamples: 4000,
+        }
+      : config;
+
     const globe = createGlobe(canvasRef.current!, {
-      ...config,
-      width: width * 2,
-      height: width * 2,
+      ...mobileConfig,
+      width: width * (isMobile ? 1 : 2),
+      height: width * (isMobile ? 1 : 2),
       onRender: (state) => {
-        if (!pointerInteracting.current) phi += 0.005;
+        if (!pointerInteracting.current && isVisible) phi += isMobile ? 0.002 : 0.005;
         state.phi = phi + rs.get();
-        state.width = width * 2;
-        state.height = width * 2;
+        state.width = width * (isMobile ? 1 : 2);
+        state.height = width * (isMobile ? 1 : 2);
       },
     });
 
@@ -99,7 +132,7 @@ export function Globe({
       globe.destroy();
       window.removeEventListener("resize", onResize);
     };
-  }, [rs, config]);
+  }, [rs, config, isMobile, isVisible]);
 
   return (
     <div
