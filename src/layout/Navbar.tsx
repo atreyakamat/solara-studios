@@ -32,45 +32,10 @@ const Navbar: React.FC = () => {
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-8 md:flex" onMouseLeave={handleMouseLeave}>
-          {/* Home Dropdown */}
-          <div className="relative">
-            <button
-              onClick={() => handleDropdownToggle('home')}
-              onMouseEnter={() => setActiveDropdown('home')}
-              className="text-sm font-medium text-white hover:text-white/80 transition-colors flex items-center gap-1"
-            >
-              Home
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            {activeDropdown === 'home' && (
-              <div className="absolute top-full left-0 mt-2 w-80 bg-[#1f1c26] border border-[#433c53] rounded-lg shadow-lg p-4">
-                <div className="grid gap-4">
-                  <div className="bg-gradient-to-br from-[#2d1a4a] to-[#1a1620] rounded-lg p-4">
-                    <div className="text-lg font-medium text-white mb-2">Solara Studios</div>
-                    <p className="text-[#a89db8] text-sm">
-                      Empowering businesses with AI and automation solutions.
-                    </p>
-                  </div>
-                  <div className="grid gap-2">
-                    <Link to="/" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
-                      <div className="text-sm font-medium text-white">Overview</div>
-                      <p className="text-[#a89db8] text-xs">Learn about our AI solutions</p>
-                    </Link>
-                    <Link to="/about" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
-                      <div className="text-sm font-medium text-white">About Us</div>
-                      <p className="text-[#a89db8] text-xs">Our mission and team</p>
-                    </Link>
-                    <Link to="/contact" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
-                      <div className="text-sm font-medium text-white">Contact</div>
-                      <p className="text-[#a89db8] text-xs">Get in touch with us</p>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
+          {/* Home */}
+          <Link to="/" className="text-sm font-medium text-white hover:text-white/80 transition-colors">
+            Home
+          </Link>
 
           {/* Services Dropdown */}
           <div className="relative">
@@ -88,40 +53,32 @@ const Navbar: React.FC = () => {
               <div className="absolute top-full left-0 mt-2 w-96 bg-[#1f1c26] border border-[#433c53] rounded-lg shadow-lg p-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <h3 className="text-sm font-semibold text-white mb-3">AI Solutions</h3>
+                    <h3 className="text-sm font-semibold text-white mb-3">Core Services</h3>
                     <div className="space-y-2">
-                      <Link to="/services" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
-                        <div className="text-sm font-medium text-white">AI Development</div>
-                        <p className="text-[#a89db8] text-xs">Custom AI models and applications</p>
+                      <Link to="/services#web-design" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
+                        <div className="text-sm font-medium text-white">Website Design</div>
+                        <p className="text-[#a89db8] text-xs">Modern, responsive websites</p>
                       </Link>
-                      <Link to="/services" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
-                        <div className="text-sm font-medium text-white">Machine Learning</div>
-                        <p className="text-[#a89db8] text-xs">Predictive analytics and insights</p>
+                      <Link to="/services#automation" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
+                        <div className="text-sm font-medium text-white">Automation Services</div>
+                        <p className="text-[#a89db8] text-xs">Streamline your business</p>
                       </Link>
-                      <Link to="/services" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
-                        <div className="text-sm font-medium text-white">Natural Language Processing</div>
-                        <p className="text-[#a89db8] text-xs">Text analysis and chatbots</p>
+                      <Link to="/services#subscriptions" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
+                        <div className="text-sm font-medium text-white">Subscription Plans</div>
+                        <p className="text-[#a89db8] text-xs">Flexible monthly packages</p>
                       </Link>
                     </div>
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-white mb-3">Automation</h3>
+                    <h3 className="text-sm font-semibold text-white mb-3">Advanced Solutions</h3>
                     <div className="space-y-2">
-                      <Link to="/services" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
-                        <div className="text-sm font-medium text-white">Process Automation</div>
-                        <p className="text-[#a89db8] text-xs">Streamline business operations</p>
+                      <Link to="/services#mobile-app" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
+                        <div className="text-sm font-medium text-white">Mobile App Development</div>
+                        <p className="text-[#a89db8] text-xs">iOS & Android apps</p>
                       </Link>
-                      <Link to="/services" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
-                        <div className="text-sm font-medium text-white">RPA Solutions</div>
-                        <p className="text-[#a89db8] text-xs">Robotic process automation</p>
-                      </Link>
-                      <Link to="/services" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
-                        <div className="text-sm font-medium text-white">Workflow Optimization</div>
-                        <p className="text-[#a89db8] text-xs">Improve efficiency and productivity</p>
-                      </Link>
-                      <Link to="/globe-demo" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
-                        <div className="text-sm font-medium text-white">3D Globe Demo</div>
-                        <p className="text-[#a89db8] text-xs">Interactive 3D visualization</p>
+                      <Link to="/services#custom" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
+                        <div className="text-sm font-medium text-white">Custom Solutions</div>
+                        <p className="text-[#a89db8] text-xs">Tailored for your business</p>
                       </Link>
                     </div>
                   </div>
@@ -130,64 +87,42 @@ const Navbar: React.FC = () => {
             )}
           </div>
 
-          {/* Solutions Dropdown */}
+          {/* Work Dropdown */}
           <div className="relative">
             <button
-              onClick={() => handleDropdownToggle('solutions')}
-              onMouseEnter={() => setActiveDropdown('solutions')}
+              onClick={() => handleDropdownToggle('work')}
+              onMouseEnter={() => setActiveDropdown('work')}
               className="text-sm font-medium text-white hover:text-white/80 transition-colors flex items-center gap-1"
             >
-              Solutions
+              Work
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
-            {activeDropdown === 'solutions' && (
+            {activeDropdown === 'work' && (
               <div className="absolute top-full left-0 mt-2 w-80 bg-[#1f1c26] border border-[#433c53] rounded-lg shadow-lg p-4">
-                <div className="space-y-3">
-                  <Link to="/pricing" className="block p-3 rounded hover:bg-[#2d2938] transition-colors">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 bg-[#6211d4] rounded-lg flex items-center justify-center">
-                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-                        </svg>
-                      </div>
-                      <div>
-                        <div className="text-sm font-medium text-white">Pricing Plans</div>
-                        <p className="text-[#a89db8] text-xs">Choose the right plan for your business</p>
-                      </div>
-                    </div>
+                <div className="grid gap-2">
+                  <Link to="/portfolio" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
+                    <div className="text-sm font-medium text-white">Portfolio / Projects</div>
+                    <p className="text-[#a89db8] text-xs">Our recent work</p>
                   </Link>
-                  <Link to="/case-studies" className="block p-3 rounded hover:bg-[#2d2938] transition-colors">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 bg-[#6211d4] rounded-lg flex items-center justify-center">
-                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <div className="text-sm font-medium text-white">Case Studies</div>
-                        <p className="text-[#a89db8] text-xs">See how we've helped other businesses</p>
-                      </div>
-                    </div>
+                  <Link to="/case-studies" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
+                    <div className="text-sm font-medium text-white">Case Studies</div>
+                    <p className="text-[#a89db8] text-xs">Success stories</p>
                   </Link>
-                  <Link to="/consultation" className="block p-3 rounded hover:bg-[#2d2938] transition-colors">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 bg-[#6211d4] rounded-lg flex items-center justify-center">
-                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <div className="text-sm font-medium text-white">Consultation</div>
-                        <p className="text-[#a89db8] text-xs">Get expert advice for your project</p>
-                      </div>
-                    </div>
+                  <Link to="/testimonials" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
+                    <div className="text-sm font-medium text-white">Testimonials</div>
+                    <p className="text-[#a89db8] text-xs">What clients say</p>
                   </Link>
                 </div>
               </div>
             )}
           </div>
+
+          {/* Pricing */}
+          <Link to="/pricing" className="text-sm font-medium text-white hover:text-white/80 transition-colors">
+            Pricing
+          </Link>
 
           {/* Resources Dropdown */}
           <div className="relative">
@@ -202,35 +137,91 @@ const Navbar: React.FC = () => {
               </svg>
             </button>
             {activeDropdown === 'resources' && (
-              <div className="absolute top-full left-0 mt-2 w-64 bg-[#1f1c26] border border-[#433c53] rounded-lg shadow-lg p-4">
-                <div className="space-y-2">
-                  <Link to="/documentation" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
-                    <div className="text-sm font-medium text-white">Documentation</div>
+              <div className="absolute top-full left-0 mt-2 w-80 bg-[#1f1c26] border border-[#433c53] rounded-lg shadow-lg p-4">
+                <div className="grid gap-2">
+                  <Link to="/free-tools" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
+                    <div className="text-sm font-medium text-white">Free Tools</div>
+                    <p className="text-[#a89db8] text-xs">SEO audit, chatbot demo, etc.</p>
                   </Link>
-                  <Link to="/api-reference" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
-                    <div className="text-sm font-medium text-white">API Reference</div>
+                  <Link to="/guides" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
+                    <div className="text-sm font-medium text-white">Guides / PDFs</div>
+                    <p className="text-[#a89db8] text-xs">Downloadable resources</p>
                   </Link>
-                  <Link to="/tutorials" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
-                    <div className="text-sm font-medium text-white">Tutorials</div>
-                  </Link>
-                  <Link to="/blog" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
-                    <div className="text-sm font-medium text-white">Blog</div>
-                  </Link>
-                  <Link to="/support" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
-                    <div className="text-sm font-medium text-white">Support</div>
+                  <Link to="/videos" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
+                    <div className="text-sm font-medium text-white">Videos & Reels</div>
+                    <p className="text-[#a89db8] text-xs">Instagram & YouTube content</p>
                   </Link>
                 </div>
               </div>
             )}
           </div>
 
-          {/* Simple Links */}
-          <Link to="/about" className="text-sm font-medium text-white hover:text-white/80 transition-colors">
-            About
-          </Link>
-          <Link to="/contact" className="text-sm font-medium text-white hover:text-white/80 transition-colors">
-            Contact
-          </Link>
+          {/* About Dropdown */}
+          <div className="relative">
+            <button
+              onClick={() => handleDropdownToggle('about')}
+              onMouseEnter={() => setActiveDropdown('about')}
+              className="text-sm font-medium text-white hover:text-white/80 transition-colors flex items-center gap-1"
+            >
+              About
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            {activeDropdown === 'about' && (
+              <div className="absolute top-full left-0 mt-2 w-72 bg-[#1f1c26] border border-[#433c53] rounded-lg shadow-lg p-4">
+                <div className="grid gap-2">
+                  <Link to="/about#story" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
+                    <div className="text-sm font-medium text-white">Our Story</div>
+                  </Link>
+                  <Link to="/about#team" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
+                    <div className="text-sm font-medium text-white">Team</div>
+                  </Link>
+                  <Link to="/about#vision" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
+                    <div className="text-sm font-medium text-white">Vision</div>
+                  </Link>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Contact Dropdown */}
+          <div className="relative">
+            <button
+              onClick={() => handleDropdownToggle('contact')}
+              onMouseEnter={() => setActiveDropdown('contact')}
+              className="text-sm font-medium text-white hover:text-white/80 transition-colors flex items-center gap-1"
+            >
+              Contact
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            {activeDropdown === 'contact' && (
+              <div className="absolute top-full left-0 mt-2 w-72 bg-[#1f1c26] border border-[#433c53] rounded-lg shadow-lg p-4">
+                <div className="grid gap-2">
+                  <Link to="/contact#lead-form" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
+                    <div className="text-sm font-medium text-white">Lead Form</div>
+                  </Link>
+                  <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
+                    <div className="text-sm font-medium text-white">WhatsApp</div>
+                  </a>
+                  <Link to="/contact#book-call" className="block p-2 rounded hover:bg-[#2d2938] transition-colors">
+                    <div className="text-sm font-medium text-white">Book a Call</div>
+                  </Link>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Get Started CTA */}
+          <a
+            href="#contact"
+            className="ml-4 px-5 py-2 rounded-lg bg-[#6211d4] text-white font-semibold shadow hover:bg-[#7d3cf8] transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-[#6211d4]"
+            style={{ whiteSpace: 'nowrap' }}
+          >
+            Get Started
+          </a>
         </nav>
 
         {/* Mobile hamburger */}

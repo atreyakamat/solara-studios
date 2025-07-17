@@ -1,128 +1,97 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Meteors } from './magicui/Meteors';
+
+// Lucide/Tabler icons (SVGs)
+const InstagramIcon = () => (
+  <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+    <rect width="20" height="20" x="2" y="2" rx="5"/>
+    <circle cx="12" cy="12" r="5"/>
+    <circle cx="17.5" cy="6.5" r="1.5"/>
+  </svg>
+);
+const LinkedInIcon = () => (
+  <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+    <rect x="2" y="2" width="20" height="20" rx="5"/>
+    <path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 1 1 4 0v4"/>
+  </svg>
+);
+const YouTubeIcon = () => (
+  <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+    <rect x="2" y="6" width="20" height="12" rx="4"/>
+    <path d="M10 9.5v5l5-2.5-5-2.5z"/>
+  </svg>
+);
 
 const Footer: React.FC = () => {
-  const footerSections = [
-    {
-      title: 'Solutions',
-      links: [
-        { label: 'AI Development', href: '/services#ai-development' },
-        { label: 'Process Automation', href: '/services#automation' },
-        { label: 'Data Analytics', href: '/services#analytics' },
-        { label: 'AI Security', href: '/services#security' },
-        { label: 'AI Consulting', href: '/services#consulting' },
-      ],
-    },
-    {
-      title: 'Company',
-      links: [
-        { label: 'About Us', href: '/about' },
-        { label: 'Case Studies', href: '/case-studies' },
-        { label: 'Careers', href: '/careers' },
-        { label: 'Blog', href: '/blog' },
-        { label: 'Contact', href: '/contact' },
-      ],
-    },
-    {
-      title: 'Resources',
-      links: [
-        { label: 'Documentation', href: '/docs' },
-        { label: 'API Reference', href: '/api' },
-        { label: 'Tutorials', href: '/tutorials' },
-        { label: 'Support', href: '/support' },
-        { label: 'Status', href: '/status' },
-      ],
-    },
-    {
-      title: 'Legal',
-      links: [
-        { label: 'Privacy Policy', href: '/privacy' },
-        { label: 'Terms of Service', href: '/terms' },
-        { label: 'Cookie Policy', href: '/cookies' },
-        { label: 'Security', href: '/security' },
-        { label: 'Compliance', href: '/compliance' },
-      ],
-    },
-  ];
-
-  const socialLinks = [
-    {
-      name: 'Twitter',
-      href: 'https://twitter.com/solarastudios',
-      icon: (
-        <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
-        </svg>
-      ),
-    },
-    {
-      name: 'GitHub',
-      href: 'https://github.com/solarastudios',
-      icon: (
-        <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-          <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
-        </svg>
-      ),
-    },
-    {
-      name: 'LinkedIn',
-      href: 'https://linkedin.com/company/solarastudios',
-      icon: (
-        <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-          <path fillRule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clipRule="evenodd" />
-        </svg>
-      ),
-    },
-  ];
-
   return (
-    <footer className="bg-[#141118] border-t border-[#2f2839]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
-          {footerSections.map((section) => (
-            <div key={section.title}>
-              <h3 className="text-white font-semibold mb-4">{section.title}</h3>
-              <ul className="space-y-2">
-                {section.links.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      to={link.href}
-                      className="text-[#a89db9] hover:text-white transition-colors duration-300 text-sm"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-12 pt-8 border-t border-[#2f2839]">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="flex items-center space-x-4">
-              <Link to="/" className="text-2xl font-bold bg-gradient-to-r from-[#6211d4] to-[#8444e3] text-transparent bg-clip-text">
-                Solara Studios
-              </Link>
-              <span className="text-[#a89db9] text-sm">© 2024 All rights reserved.</span>
-            </div>
-
-            <div className="flex space-x-6">
-              {socialLinks.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-[#a89db9] hover:text-white transition-colors duration-300"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span className="sr-only">{item.name}</span>
-                  {item.icon}
-                </a>
-              ))}
-            </div>
+    <footer className="relative bg-[#0e0e0e] text-white px-6 md:px-8 py-12 font-sans overflow-hidden">
+      {/* Meteors background */}
+      <Meteors number={30} />
+      <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 lg:gap-16">
+        {/* Brand & Vision */}
+        <div>
+          <Link to="/" className="text-2xl font-bold bg-gradient-to-r from-[#6211d4] to-[#8444e3] text-transparent bg-clip-text mb-2 inline-block">
+            Solara Studios
+          </Link>
+          <p className="text-[#d1cbe7] text-sm mt-2 mb-1">Crafting future-ready websites & automation systems for modern businesses.</p>
+          <p className="text-[#a89db9] text-xs mb-4">Built in Goa, designed for India’s digital leap.</p>
+          <div className="flex space-x-4 mt-2">
+            <a href="https://instagram.com/solarastudios" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-[#e1306c] transition-colors"><InstagramIcon /></a>
+            <a href="https://linkedin.com/company/solarastudios" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-[#0a66c2] transition-colors"><LinkedInIcon /></a>
+            <a href="https://youtube.com/@solarastudios" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-[#ff0000] transition-colors"><YouTubeIcon /></a>
           </div>
         </div>
+        {/* Services */}
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Services</h3>
+          <ul className="space-y-2 text-sm">
+            <li><Link to="/services#web-design" className="text-[#a89db9] hover:text-white transition-colors">Website Design</Link></li>
+            <li><Link to="/services#automation" className="text-[#a89db9] hover:text-white transition-colors">Automation Services</Link></li>
+            <li><Link to="/services#subscriptions" className="text-[#a89db9] hover:text-white transition-colors">Subscription Plans</Link></li>
+            <li><Link to="/services#custom" className="text-[#a89db9] hover:text-white transition-colors">Custom Solutions</Link></li>
+            <li><Link to="/services#mobile-app" className="text-[#a89db9] hover:text-white transition-colors">Mobile Apps</Link></li>
+          </ul>
+        </div>
+        {/* Quick Links */}
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+          <ul className="space-y-2 text-sm">
+            <li><Link to="/about" className="text-[#a89db9] hover:text-white transition-colors">About Us</Link></li>
+            <li><Link to="/portfolio" className="text-[#a89db9] hover:text-white transition-colors">Work / Portfolio</Link></li>
+            <li><Link to="/pricing" className="text-[#a89db9] hover:text-white transition-colors">Pricing</Link></li>
+            <li><Link to="/blog" className="text-[#a89db9] hover:text-white transition-colors">Blog</Link></li>
+            <li><Link to="/contact" className="text-[#a89db9] hover:text-white transition-colors">Contact</Link></li>
+            <li><Link to="/privacy" className="text-[#a89db9] hover:text-white transition-colors">Privacy Policy</Link></li>
+          </ul>
+        </div>
+        {/* Contact */}
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Contact</h3>
+          <ul className="space-y-2 text-sm">
+            <li><a href="mailto:hello@solarastudios.in" className="text-[#a89db9] hover:text-white transition-colors">📧 hello@solarastudios.in</a></li>
+            {/* <li><span className="text-[#a89db9]">📞 +91-XXXXXXXXXX</span></li> */}
+            <li>
+              <a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-[#25d366] text-[#0e0e0e] font-medium hover:bg-[#1ebe57] transition-colors">
+                💬 WhatsApp Us
+              </a>
+            </li>
+            <li><span className="text-[#a89db9]">🕒 Mon–Sat, 10am–7pm IST</span></li>
+            <li>
+              <a href="https://calendly.com/solarastudios/discovery-call" target="_blank" rel="noopener noreferrer" className="inline-block mt-2 px-4 py-2 rounded bg-[#6211d4] text-white font-semibold shadow hover:bg-[#7d3cf8] transition-colors text-sm">Book a Free Discovery Call</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      {/* Divider */}
+      <div className="relative z-10 border-t border-[#232323] mt-10 mb-0"></div>
+      {/* Bottom Bar */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 py-4 flex flex-col md:flex-row items-center justify-between text-xs text-[#a89db9]">
+        <div>
+          © 2025 Solara Studios. All rights reserved. | Made with <span className="text-red-400">❤️</span> in Goa
+        </div>
+        {/* <div className="mt-2 md:mt-0">Powered by Notion, Webflow & GPT</div> */}
+        {/* <div className="mt-2 md:mt-0">GSTIN: 22AAAAA0000A1Z5</div> */}
       </div>
     </footer>
   );
