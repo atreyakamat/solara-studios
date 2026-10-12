@@ -44,8 +44,8 @@ export function Globe({
   className?: string;
   config?: COBEOptions;
 }) {
-  let phi = 0;
-  let width = 0;
+  const phiRef = useRef(0);
+  const widthRef = useRef(0);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pointerInteracting = useRef<number | null>(null);
   const pointerInteractionMovement = useRef(0);
@@ -62,13 +62,14 @@ export function Globe({
 
   // Pause animation when offscreen
   useEffect(() => {
+    const canvas = canvasRef.current;
     const observer = new window.IntersectionObserver(
       ([entry]) => setIsVisible(entry.isIntersecting),
       { threshold: 0.1 }
     );
-    if (canvasRef.current) observer.observe(canvasRef.current);
+    if (canvas) observer.observe(canvas);
     return () => {
-      if (canvasRef.current) observer.unobserve(canvasRef.current);
+      if (canvas) observer.unobserve(canvas);
     };
   }, []);
 
@@ -97,7 +98,7 @@ export function Globe({
   useEffect(() => {
     const onResize = () => {
       if (canvasRef.current) {
-        width = canvasRef.current.offsetWidth;
+        widthRef.current = canvasRef.current.offsetWidth;
       }
     };
 
@@ -117,13 +118,13 @@ export function Globe({
 
     const globe = createGlobe(canvasRef.current!, {
       ...mobileConfig,
-      width: width * (isMobile ? 1 : 2),
-      height: width * (isMobile ? 1 : 2),
+      width: widthRef.current * (isMobile ? 1 : 2),
+      height: widthRef.current * (isMobile ? 1 : 2),
       onRender: (state) => {
-        if (!pointerInteracting.current && isVisible) phi += isMobile ? 0.002 : 0.005;
-        state.phi = phi + rs.get();
-        state.width = width * (isMobile ? 1 : 2);
-        state.height = width * (isMobile ? 1 : 2);
+        if (!pointerInteracting.current && isVisible) phiRef.current += isMobile ? 0.002 : 0.005;
+        state.phi = phiRef.current + rs.get();
+        state.width = widthRef.current * (isMobile ? 1 : 2);
+        state.height = widthRef.current * (isMobile ? 1 : 2);
       },
     });
 

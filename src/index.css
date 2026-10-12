@@ -3,55 +3,137 @@
 @tailwind utilities;
 
 :root {
-  --primary: #6211d4;
-  --primary-hover: #4f0eb0;
-  --background: #141118;
-  --background-light: #201c27;
-  --border: #453b54;
-  --text: #a89db9;
+  --color-ink: #070A05;
+  --color-dark-green: #111B0B;
+  --color-deep-olive: #20320B;
+  --color-lime: #A6FF19;
+  --color-lime-light: #C4FF77;
+  --color-cream: #F7F9EF;
+  --color-white: #FFFFFF;
+  --color-muted: #73776C;
+  --color-grid: #DCE4CF;
+  --color-border: #D7DEC9;
 }
 
 @layer base {
   html {
-    @apply antialiased;
+    @apply scroll-smooth antialiased;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    @apply m-0 bg-[#141118] text-white;
-    font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+    @apply m-0 bg-ink text-white font-sans;
+  }
+
+  /* Accessible focus states across all interactive controls */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid #A6FF19;
+    outline-offset: 2px;
+  }
+
+  /* Respect prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
-@layer components {
-  .btn-primary {
-    @apply rounded-full bg-[#6211d4] px-6 py-2 text-sm font-bold text-white transition-colors hover:bg-[#4f0eb0];
+@layer utilities {
+  /* Subtle square grid for light/cream sections */
+  .bg-cream-grid {
+    background-color: #F7F9EF;
+    background-size: 32px 32px;
+    background-image: 
+      linear-gradient(to right, #DCE4CF 1px, transparent 1px),
+      linear-gradient(to bottom, #DCE4CF 1px, transparent 1px);
   }
 
-  .btn-secondary {
-    @apply rounded-full bg-[#2f2839] px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-[#453b54];
+  /* Fine subtle grid for dark sections */
+  .bg-dark-grid {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(166, 255, 25, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(166, 255, 25, 0.04) 1px, transparent 1px);
   }
 
-  .card {
-    @apply flex flex-col gap-4 rounded-lg border border-[#453b54] bg-[#201c27] p-6;
+  /* Lime pill glow */
+  .glow-lime {
+    box-shadow: 0 0 35px rgba(166, 255, 25, 0.25);
   }
 
-  .card-icon {
-    @apply flex h-12 w-12 items-center justify-center rounded-lg bg-[#6211d4];
+  /* Hide scrollbar while preserving touch/wheel scrolling */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
   }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
 
-  .heading-1 {
-    @apply text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl;
+/* Continuous marquee animations */
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0%);
   }
+  100% {
+    transform: translateX(-50%);
+  }
+}
 
-  .heading-2 {
-    @apply text-3xl font-bold text-white;
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-50%);
   }
+  100% {
+    transform: translateX(0%);
+  }
+}
 
-  .heading-3 {
-    @apply text-xl font-bold text-white;
-  }
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 35s linear infinite;
+}
 
-  .text-body {
-    @apply text-base text-[#a89db9] leading-relaxed;
-  }
-} 
+.animate-marquee-right {
+  display: flex;
+  width: max-content;
+  animation: marquee-right 35s linear infinite;
+}
+
+.animate-marquee-left:hover,
+.animate-marquee-right:hover {
+  animation-play-state: paused;
+}
+
+/* Custom scrollbar in dark & lime tokens */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #070A05;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #20320B;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A6FF19;
+}

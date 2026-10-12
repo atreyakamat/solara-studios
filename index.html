@@ -1,16 +1,62 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Solara Studios - AI and Automation Solutions for Modern Businesses" />
-    <title>Solara Studios | AI & Automation Solutions</title>
+    
+    <!-- Primary Metadata -->
+    <title>Solara Studios — Digital Design &amp; Development</title>
+    <meta name="title" content="Solara Studios — Digital Design &amp; Development" />
+    <meta name="description" content="Solara Studios creates thoughtful websites, focused landing pages, and practical digital experiences for businesses and agency partners." />
+    <meta name="author" content="Atreya Kamat — Solara Studios" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://solarastudios.com" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://solarastudios.com" />
+    <meta property="og:title" content="Solara Studios — Digital Design &amp; Development" />
+    <meta property="og:description" content="Solara Studios creates thoughtful websites, focused landing pages, and practical digital experiences for businesses and agency partners." />
+    <meta property="og:image" content="https://solarastudios.com/og-image.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://solarastudios.com" />
+    <meta name="twitter:title" content="Solara Studios — Digital Design &amp; Development" />
+    <meta name="twitter:description" content="Solara Studios creates thoughtful websites, focused landing pages, and practical digital experiences for businesses and agency partners." />
+    <meta name="twitter:image" content="https://solarastudios.com/og-image.png" />
+
+    <!-- Typography: Space Grotesk (Headings), Inter (Body), JetBrains Mono (Kickers) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Solara Studios",
+      "founder": {
+        "@type": "Person",
+        "name": "Atreya Kamat",
+        "url": "https://atreyakamat.dev"
+      },
+      "url": "https://solarastudios.com",
+      "description": "Digital design, website development, landing pages, technical SEO, and white-label development for marketing agencies.",
+      "knowsAbout": [
+        "Website Design & Development",
+        "Landing Pages",
+        "Technical SEO",
+        "Digital Growth & Optimization",
+        "White-Label Development"
+      ],
+      "priceRange": "$$"
+    }
+    </script>
   </head>
-  <body class="dark">
+  <body class="bg-ink text-white font-sans antialiased selection:bg-lime selection:text-ink min-h-screen">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

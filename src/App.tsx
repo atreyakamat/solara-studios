@@ -1,38 +1,22 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import MainLayout from './layout/MainLayout';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import HomePage from './pages/HomePage';
-import About from './pages/About';
-import Services from './pages/Services';
-import Pricing from './pages/Pricing';
-import Contact from './pages/Contact';
-import CaseStudies from './pages/CaseStudies';
-import Documentation from './pages/Documentation';
-import Blog from './pages/Blog';
-import Support from './pages/Support';
-import Consultation from './pages/Consultation';
-import APIReference from './pages/APIReference';
-import Tutorials from './pages/Tutorials';
-import GlobeDemo from './pages/GlobeDemo';
+import PrivacyPage from './pages/PrivacyPage';
 
 const App: React.FC = () => {
   return (
     <Routes>
-      <Route path="/" element={<MainLayout />}>
-        <Route index element={<HomePage />} />
-        <Route path="about" element={<About />} />
-        <Route path="services" element={<Services />} />
-        <Route path="pricing" element={<Pricing />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path="case-studies" element={<CaseStudies />} />
-        <Route path="documentation" element={<Documentation />} />
-        <Route path="blog" element={<Blog />} />
-        <Route path="support" element={<Support />} />
-        <Route path="consultation" element={<Consultation />} />
-        <Route path="api-reference" element={<APIReference />} />
-        <Route path="tutorials" element={<Tutorials />} />
-        <Route path="globe-demo" element={<GlobeDemo />} />
-      </Route>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/privacy" element={<PrivacyPage />} />
+      {/* Route redirects to prevent dead links on common aliases */}
+      <Route path="/work" element={<Navigate to="/#work" replace />} />
+      <Route path="/services" element={<Navigate to="/#services" replace />} />
+      <Route path="/pricing" element={<Navigate to="/#pricing" replace />} />
+      <Route path="/contact" element={<Navigate to="/#contact" replace />} />
+      <Route path="/about" element={<Navigate to="/#why-solara" replace />} />
+      <Route path="/case-studies" element={<Navigate to="/#work" replace />} />
+      {/* Fallback to homepage */}
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 };

@@ -1,30 +1,54 @@
-import React from 'react';
-import Hero from '../components/Hero';
-import WhyChooseUs from '../components/WhyChooseUs';
-import Services from '../components/Services';
-import CaseStudies from '../components/CaseStudies';
-import Pricing from '../components/Pricing';
-import AIDemo from '../components/AIDemo';
-import Testimonials from '../components/Testimonials';
-import CTA from '../components/CTA';
-import { AuroraBackground } from '../components/AuroraBackground';
+import React, { useState } from 'react';
+import AgencyHeader from '../components/agency/AgencyHeader';
+import AgencyHero from '../components/agency/AgencyHero';
+import AgencyAbout from '../components/agency/AgencyAbout';
+import AgencyServicesGrid from '../components/agency/AgencyServicesGrid';
+import AgencyPortfolioCarousel from '../components/agency/AgencyPortfolioCarousel';
+import AgencyCapabilities from '../components/agency/AgencyCapabilities';
+import AgencyContact from '../components/agency/AgencyContact';
+import AgencyFooter from '../components/agency/AgencyFooter';
 
-const HomePage: React.FC = () => {
+export const HomePage: React.FC = () => {
+  const [selectedService, setSelectedService] = useState<string>('Website design and development');
+
+  const scrollToContact = (serviceName?: string) => {
+    if (serviceName) {
+      setSelectedService(serviceName);
+    }
+    const element = document.getElementById('contact');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <AuroraBackground>
-      <div className="flex flex-col items-center justify-center min-h-screen w-full px-4">
-        <div className="w-full max-w-4xl flex flex-col items-center justify-center gap-10">
-          <Hero />
-          <WhyChooseUs />
-          <Services />
-          <CaseStudies />
-          <Pricing />
-          <AIDemo />
-          <Testimonials />
-          <CTA />
-        </div>
-      </div>
-    </AuroraBackground>
+    <div className="min-h-screen bg-ink text-white selection:bg-lime selection:text-ink font-sans flex flex-col">
+      {/* 1. Header & Navigation */}
+      <AgencyHeader onLetsTalkClick={() => scrollToContact()} />
+
+      <main id="main-content" className="flex-1">
+        {/* 2. Dark Cinematic Hero */}
+        <AgencyHero onStartProject={() => scrollToContact()} />
+
+        {/* 3 & 4. About Solara Studios & Animated Services Marquee */}
+        <AgencyAbout />
+
+        {/* 5. Services Grid */}
+        <AgencyServicesGrid onSelectService={(service) => scrollToContact(service)} />
+
+        {/* 6. Selected Work (Horizontal Portfolio Carousel) */}
+        <AgencyPortfolioCarousel />
+
+        {/* 7. Technical & Digital Capabilities Feature */}
+        <AgencyCapabilities />
+
+        {/* 8. Project Enquiry Section ("Let's talk.") */}
+        <AgencyContact initialService={selectedService} />
+      </main>
+
+      {/* 9. Footer */}
+      <AgencyFooter />
+    </div>
   );
 };
 
