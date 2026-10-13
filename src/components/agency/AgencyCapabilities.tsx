@@ -1,4 +1,6 @@
 import React from 'react';
+import { motion } from 'motion/react';
+import { Reveal, Stagger, fadeUpItem } from '../motion/Reveal';
 
 export const AgencyCapabilities: React.FC = () => {
   const capabilities = [
@@ -8,7 +10,7 @@ export const AgencyCapabilities: React.FC = () => {
     },
     {
       title: 'Accessible Interaction Patterns',
-      desc: 'Keyboard navigable, semantic markup, and WCAG 2.2 AA compliant focus states.',
+      desc: 'Keyboard navigable, semantic markup, and visible focus states aligned with WCAG 2.2 AA.',
     },
     {
       title: 'Maintainable Frontend Architecture',
@@ -16,7 +18,7 @@ export const AgencyCapabilities: React.FC = () => {
     },
     {
       title: 'Performance-Conscious Development',
-      desc: 'Sub-second initial loads, optimized assets, and resilient Core Web Vitals.',
+      desc: 'Lean bundles, optimized assets, and attention to Core Web Vitals.',
     },
     {
       title: 'Technical SEO Foundations',
@@ -58,10 +60,12 @@ export const AgencyCapabilities: React.FC = () => {
               We care about the details behind the experience: performance, responsiveness, clear structure, and the technical decisions that make a website useful.
             </p>
 
-            <div className="space-y-4">
+            <Stagger className="space-y-4" stagger={0.08}>
               {capabilities.map((cap) => (
-                <div
+                <motion.div
                   key={cap.title}
+                  variants={fadeUpItem}
+                  whileHover={{ x: 6 }}
                   className="p-4 rounded-xl bg-darkGreen/80 border border-white/10 hover:border-lime/40 transition-colors flex items-start gap-4"
                 >
                   <div className="w-6 h-6 rounded-full bg-deepOlive border border-lime text-lime flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">
@@ -75,13 +79,13 @@ export const AgencyCapabilities: React.FC = () => {
                       {cap.desc}
                     </p>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </Stagger>
           </div>
 
           {/* Right Column: Visual Composition Representing Digital Implementation */}
-          <div className="lg:col-span-6">
+          <Reveal className="lg:col-span-6" x={40} y={0}>
             <div className="relative p-6 sm:p-8 rounded-2xl bg-darkGreen border-2 border-lime/30 shadow-lime-glow overflow-hidden">
               
               {/* Header Tab Bar */}
@@ -94,7 +98,7 @@ export const AgencyCapabilities: React.FC = () => {
                 <span className="text-lime font-bold uppercase tracking-wider text-[11px]">
                   SOLARA.CORE.ENGINE
                 </span>
-                <span className="text-white/60">v2.4 ACTIVE</span>
+                <span className="text-white/60">STACK OVERVIEW</span>
               </div>
 
               {/* Digital Architecture Schematic */}
@@ -103,16 +107,16 @@ export const AgencyCapabilities: React.FC = () => {
                 {/* Metric Strip */}
                 <div className="grid grid-cols-3 gap-3">
                   <div className="p-3 rounded-lg bg-ink border border-lime/20 text-center">
-                    <div className="text-lime text-xl font-heading font-bold">100</div>
+                    <div className="text-lime text-xl font-heading font-bold">Fast</div>
                     <div className="text-[10px] text-white/60 uppercase mt-0.5">Performance</div>
                   </div>
                   <div className="p-3 rounded-lg bg-ink border border-lime/20 text-center">
-                    <div className="text-lime text-xl font-heading font-bold">&lt;0.5s</div>
-                    <div className="text-[10px] text-white/60 uppercase mt-0.5">LCP Target</div>
+                    <div className="text-lime text-xl font-heading font-bold">Lean</div>
+                    <div className="text-[10px] text-white/60 uppercase mt-0.5">Bundles</div>
                   </div>
                   <div className="p-3 rounded-lg bg-ink border border-lime/20 text-center">
-                    <div className="text-lime text-xl font-heading font-bold">0ms</div>
-                    <div className="text-[10px] text-white/60 uppercase mt-0.5">Layout Shift</div>
+                    <div className="text-lime text-xl font-heading font-bold">Stable</div>
+                    <div className="text-[10px] text-white/60 uppercase mt-0.5">Layout</div>
                   </div>
                 </div>
 
@@ -142,13 +146,13 @@ export const AgencyCapabilities: React.FC = () => {
                     <span className="w-2 h-2 rounded-full bg-lime animate-ping" />
                     <span>PRODUCTION READY ARCHITECTURE</span>
                   </div>
-                  <span className="text-white font-normal">ZERO OVERHEAD</span>
+                  <span className="text-white font-normal">BUILT TO HAND OVER</span>
                 </div>
 
               </div>
 
             </div>
-          </div>
+          </Reveal>
 
         </div>
       </div>

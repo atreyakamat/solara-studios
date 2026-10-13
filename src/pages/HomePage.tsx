@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
+import { MotionConfig } from 'motion/react';
 import AgencyHeader from '../components/agency/AgencyHeader';
 import AgencyHero from '../components/agency/AgencyHero';
 import AgencyAbout from '../components/agency/AgencyAbout';
 import AgencyServicesGrid from '../components/agency/AgencyServicesGrid';
+import AgencyAudiences from '../components/agency/AgencyAudiences';
 import AgencyPortfolioCarousel from '../components/agency/AgencyPortfolioCarousel';
+import AgencyProcess from '../components/agency/AgencyProcess';
+import AgencyOffer from '../components/agency/AgencyOffer';
+import AgencyFounder from '../components/agency/AgencyFounder';
 import AgencyCapabilities from '../components/agency/AgencyCapabilities';
 import AgencyContact from '../components/agency/AgencyContact';
 import AgencyFooter from '../components/agency/AgencyFooter';
+import ScrollProgress from '../components/motion/ScrollProgress';
+import { Reveal } from '../components/motion/Reveal';
 
 export const HomePage: React.FC = () => {
   const [selectedService, setSelectedService] = useState<string>('Website design and development');
@@ -22,33 +29,31 @@ export const HomePage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-ink text-white selection:bg-lime selection:text-ink font-sans flex flex-col">
-      {/* 1. Header & Navigation */}
-      <AgencyHeader onLetsTalkClick={() => scrollToContact()} />
+    <MotionConfig reducedMotion="user">
+      <div className="min-h-screen bg-ink text-white selection:bg-lime selection:text-ink font-sans flex flex-col">
+        <ScrollProgress />
+        <AgencyHeader onLetsTalkClick={() => scrollToContact()} />
 
-      <main id="main-content" className="flex-1">
-        {/* 2. Dark Cinematic Hero */}
-        <AgencyHero onStartProject={() => scrollToContact()} />
+        <main id="main-content" className="flex-1">
+          <AgencyHero onStartProject={() => scrollToContact()} />
+          <AgencyAbout />
+          <AgencyServicesGrid onSelectService={(service) => scrollToContact(service)} />
+          <AgencyAudiences />
+          <Reveal y={40}>
+            <AgencyPortfolioCarousel />
+          </Reveal>
+          <AgencyProcess />
+          <AgencyOffer onSelectPlan={(service) => scrollToContact(service)} />
+          <AgencyFounder />
+          <AgencyCapabilities />
+          <Reveal y={40}>
+            <AgencyContact initialService={selectedService} />
+          </Reveal>
+        </main>
 
-        {/* 3 & 4. About Solara Studios & Animated Services Marquee */}
-        <AgencyAbout />
-
-        {/* 5. Services Grid */}
-        <AgencyServicesGrid onSelectService={(service) => scrollToContact(service)} />
-
-        {/* 6. Selected Work (Horizontal Portfolio Carousel) */}
-        <AgencyPortfolioCarousel />
-
-        {/* 7. Technical & Digital Capabilities Feature */}
-        <AgencyCapabilities />
-
-        {/* 8. Project Enquiry Section ("Let's talk.") */}
-        <AgencyContact initialService={selectedService} />
-      </main>
-
-      {/* 9. Footer */}
-      <AgencyFooter />
-    </div>
+        <AgencyFooter />
+      </div>
+    </MotionConfig>
   );
 };
 

@@ -1,4 +1,6 @@
 import React from 'react';
+import { motion } from 'motion/react';
+import { Reveal, Stagger, fadeUpItem } from '../motion/Reveal';
 import { trackEvent } from '../../lib/analytics';
 
 interface AgencyServicesGridProps {
@@ -74,15 +76,15 @@ export const AgencyServicesGrid: React.FC<AgencyServicesGridProps> = ({ onSelect
           <rect x="70" y="35" width="60" height="6" rx="1" fill="#FFFFFF" fillOpacity="0.8" />
           {/* Performance dials */}
           <rect x="45" y="60" width="40" height="32" rx="4" fill="#111B0B" />
-          <text x="53" y="76" fill="#A6FF19" fontFamily="monospace" fontSize="12" fontWeight="bold">99</text>
+          <text x="53" y="76" fill="#A6FF19" fontFamily="monospace" fontSize="12" fontWeight="bold">FAST</text>
           <text x="48" y="86" fill="#FFFFFF" fillOpacity="0.6" fontFamily="sans-serif" fontSize="7">PERF</text>
 
           <rect x="95" y="60" width="40" height="32" rx="4" fill="#111B0B" />
-          <text x="100" y="76" fill="#A6FF19" fontFamily="monospace" fontSize="12" fontWeight="bold">100</text>
+          <text x="100" y="76" fill="#A6FF19" fontFamily="monospace" fontSize="12" fontWeight="bold">CLEAN</text>
           <text x="100" y="86" fill="#FFFFFF" fillOpacity="0.6" fontFamily="sans-serif" fontSize="7">SEO</text>
 
           <rect x="145" y="60" width="40" height="32" rx="4" fill="#111B0B" />
-          <text x="150" y="76" fill="#A6FF19" fontFamily="monospace" fontSize="12" fontWeight="bold">100</text>
+          <text x="150" y="76" fill="#A6FF19" fontFamily="monospace" fontSize="12" fontWeight="bold">OPEN</text>
           <text x="150" y="86" fill="#FFFFFF" fillOpacity="0.6" fontFamily="sans-serif" fontSize="7">A11Y</text>
         </svg>
       ),
@@ -129,7 +131,7 @@ export const AgencyServicesGrid: React.FC<AgencyServicesGridProps> = ({ onSelect
       <div className="max-w-page mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-16">
+        <Reveal className="max-w-3xl mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-deepOlive text-lime font-mono text-xs uppercase tracking-widest font-semibold mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-lime animate-pulse" />
             <span>Services</span>
@@ -145,14 +147,16 @@ export const AgencyServicesGrid: React.FC<AgencyServicesGridProps> = ({ onSelect
           <p className="font-sans text-muted text-base sm:text-lg max-w-xl leading-relaxed">
             Everything your business needs for a clearer digital presence, stronger positioning, and useful growth.
           </p>
-        </div>
+        </Reveal>
 
         {/* 4 Bright Lime Service Panels in 2-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+        <Stagger className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
           {services.map((service) => (
-            <article
+            <motion.article
               key={service.id}
-              className="group relative bg-lime rounded-2xl p-8 sm:p-10 flex flex-col justify-between border-2 border-lime transition-all duration-300 hover:shadow-lime-glow hover:-translate-y-1 overflow-hidden"
+              variants={fadeUpItem}
+              whileHover={{ y: -6 }}
+              className="group relative bg-lime rounded-2xl p-8 sm:p-10 flex flex-col justify-between border-2 border-lime transition-shadow duration-300 hover:shadow-lime-glow overflow-hidden"
             >
               {/* Graphic Illustration Container */}
               <div className="mb-6 rounded-xl overflow-hidden border border-ink/15 bg-ink p-2 transition-transform duration-300 group-hover:scale-[1.02]">
@@ -188,9 +192,9 @@ export const AgencyServicesGrid: React.FC<AgencyServicesGridProps> = ({ onSelect
                   </span>
                 </button>
               </div>
-            </article>
+            </motion.article>
           ))}
-        </div>
+        </Stagger>
 
       </div>
     </section>

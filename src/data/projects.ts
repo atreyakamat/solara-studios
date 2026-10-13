@@ -25,7 +25,7 @@ export const VERIFIED_PROJECTS: Project[] = [
     outcome: 'Deployed live client platform at PixelNPurpose.com with fast Core Web Vitals and fluid responsive storytelling.',
     stack: ['Next.js', 'Tailwind CSS', 'TypeScript', 'Responsive Storytelling'],
     liveUrl: 'https://pixelnpurpose.com',
-    repoUrl: 'https://github.com/atreyakamat/pixelnpurpose',
+    repoUrl: 'https://github.com/atreyakamat/pixel-n-purpose',
     isFlagship: true,
   },
   {
@@ -50,6 +50,7 @@ export const VERIFIED_PROJECTS: Project[] = [
     build: 'Mission-based habit product with Quasar/Vue 3 PWA, browser extension, voice-to-task capture, and dual Demo/Firebase runtimes.',
     outcome: 'Reached 100+ active users with instant offline local mode and production Firebase cloud synchronization.',
     stack: ['Vue 3', 'Quasar PWA', 'Firebase', 'Voice API'],
+    repoUrl: 'https://github.com/atreyakamat/track.now',
     isFlagship: false,
   },
   {
@@ -86,6 +87,19 @@ export const VERIFIED_PROJECTS: Project[] = [
     build: 'Modular e-commerce platform with material-aware cart logic, dynamic pricing multipliers, and WhatsApp checkout.',
     outcome: 'Seamless catalog browsing and automated order messaging without heavy third-party fees.',
     stack: ['React', 'Tailwind CSS', 'Dynamic Pricing Multipliers', 'WhatsApp Cart API'],
+    isFlagship: false,
+  },
+  {
+    id: 'vistarabi',
+    number: 'PROJECT 07',
+    category: 'AI Business Intelligence',
+    tag: 'Open Source',
+    title: 'VistaraBI — AI Dashboards for Small Businesses',
+    problem: 'Small businesses hold useful data in messy spreadsheets but lack the time and tooling to turn it into decisions.',
+    build: 'Open-source BI platform that automates data cleaning and KPI detection, builds interactive dashboards, and answers questions conversationally using Ollama, React and Node.js.',
+    outcome: 'Public open-source platform; the full source is on GitHub for anyone to review.',
+    stack: ['React', 'Node.js', 'Ollama', 'TypeScript'],
+    repoUrl: 'https://github.com/atreyakamat/VistaraBI',
     isFlagship: false,
   },
 ];

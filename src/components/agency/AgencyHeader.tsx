@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { trackEvent } from '../../lib/analytics';
 
 interface AgencyHeaderProps {
@@ -32,7 +33,8 @@ export const AgencyHeader: React.FC<AgencyHeaderProps> = ({ onLetsTalkClick }) =
     { label: 'About', href: '#about' },
     { label: 'Services', href: '#services' },
     { label: 'Work', href: '#work' },
-    { label: 'Capabilities', href: '#capabilities' },
+    { label: 'Process', href: '#process' },
+    { label: 'Pricing', href: '#pricing' },
     { label: 'Contact', href: '#contact' },
   ];
 
@@ -51,13 +53,18 @@ export const AgencyHeader: React.FC<AgencyHeaderProps> = ({ onLetsTalkClick }) =
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,padding,box-shadow,border-color] duration-300 ${
         isScrolled
           ? 'bg-ink/90 backdrop-blur-md border-b border-white/10 py-3 shadow-lg'
           : 'bg-transparent py-5 sm:py-6'
       }`}
     >
-      <div className="max-w-page mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <motion.div
+        initial={{ opacity: 0, y: -16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="max-w-page mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between"
+      >
         
         {/* Solara Studios Wordmark */}
         <a
@@ -82,7 +89,7 @@ export const AgencyHeader: React.FC<AgencyHeaderProps> = ({ onLetsTalkClick }) =
         {/* Desktop Nav Links */}
         <nav
           aria-label="Main Navigation"
-          className="hidden md:flex items-center gap-8 font-heading text-sm text-white/80"
+          className="hidden md:flex items-center gap-5 lg:gap-8 font-heading text-sm text-white/80"
         >
           {navLinks.map((link) => (
             <a
@@ -128,11 +135,16 @@ export const AgencyHeader: React.FC<AgencyHeaderProps> = ({ onLetsTalkClick }) =
           </svg>
         </button>
 
-      </div>
+      </motion.div>
 
       {/* Mobile Drawer */}
+      <AnimatePresence>
       {isMobileMenuOpen && (
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -12 }}
+          transition={{ duration: 0.25 }}
           id="agency-mobile-nav"
           className="md:hidden fixed inset-0 top-[65px] bg-ink/98 border-t border-white/10 flex flex-col justify-between p-6 z-50 backdrop-blur-xl"
         >
@@ -163,8 +175,9 @@ export const AgencyHeader: React.FC<AgencyHeaderProps> = ({ onLetsTalkClick }) =
               Founder: Atreya Kamat · <a href="https://atreyakamat.dev" target="_blank" rel="noopener noreferrer" className="underline text-white hover:text-lime">atreyakamat.dev</a>
             </p>
           </div>
-        </div>
+        </motion.div>
       )}
+      </AnimatePresence>
     </header>
   );
 };

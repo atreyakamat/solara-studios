@@ -145,6 +145,28 @@ export const submitEnquiry = async (data: EnquiryPayload): Promise<SubmissionRes
       };
     }
 
+    // Netlify Forms (production on Netlify): posts to the hidden form declared in index.html.
+    if (!import.meta.env.DEV) {
+      const fields: Record<string, string> = { 'form-name': 'enquiry' };
+      for (const [key, value] of Object.entries(payloadWithMeta)) {
+        if (typeof value === 'string' && key !== 'honeypot') {
+          fields[key] = value;
+        }
+      }
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(fields).toString(),
+      });
+      if (!response.ok) {
+        throw new Error(`Enquiry could not be sent (status ${response.status}).`);
+      }
+      return {
+        success: true,
+        message: 'Thank you. Your enquiry has been sent to Atreya Kamat. Expect a reply within 24 hours.',
+      };
+    }
+
     // Default development / preview mode boundary:
     // In production without external keys, simulate network response with verified safety.
     await new Promise((resolve) => setTimeout(resolve, 750));
@@ -168,7 +190,7 @@ export const submitEnquiry = async (data: EnquiryPayload): Promise<SubmissionRes
     const errorMsg = err instanceof Error ? err.message : 'An unexpected error occurred while sending your enquiry.';
     return {
       success: false,
-      message: `${errorMsg} Please feel free to email Atreya directly or try again shortly.`,
+      message: `${errorMsg} Please email atkamat1204@gmail.com directly or try again shortly.`,
     };
   } finally {
     isSubmissionInFlight = false;

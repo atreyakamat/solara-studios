@@ -13,7 +13,7 @@ export const AgencyContact: React.FC<AgencyContactProps> = ({ initialService }) 
     email: '',
     company: '',
     service: initialService || 'Website design and development',
-    budget: '$1,500–$3,000',
+    budget: 'Not sure yet',
     timeline: 'Within two weeks',
     description: '',
     honeypot: '',
@@ -27,24 +27,32 @@ export const AgencyContact: React.FC<AgencyContactProps> = ({ initialService }) 
 
   useEffect(() => {
     if (initialService) {
-      setFormData((prev) => ({ ...prev, service: initialService }));
+      const planBudget: Record<string, string> = {
+        'Landing page': 'Launch — $350',
+        'Digital marketing package': 'Growth — $799',
+        'Custom platform': 'Custom platform — quote after discovery',
+      };
+      setFormData((prev) => ({
+        ...prev,
+        service: initialService,
+        budget: planBudget[initialService] ?? prev.budget,
+      }));
     }
   }, [initialService]);
 
   const serviceOptions = [
     'Website design and development',
     'Landing page',
+    'Digital marketing package',
+    'Custom platform',
     'SEO and website optimization',
-    'White-label agency development',
     'Other',
   ];
 
   const budgetOptions = [
-    'Under $750',
-    '$750–$1,500',
-    '$1,500–$3,000',
-    '$3,000–$5,000',
-    '$5,000+',
+    'Launch — $350',
+    'Growth — $799',
+    'Custom platform — quote after discovery',
     'Not sure yet',
   ];
 
@@ -145,9 +153,18 @@ export const AgencyContact: React.FC<AgencyContactProps> = ({ initialService }) 
                   atreyakamat.dev ↗
                 </a>
               </div>
+              <div className="flex items-center justify-between pb-3 border-b border-borderLine">
+                <span className="text-muted uppercase tracking-wider">EMAIL</span>
+                <a
+                  href="mailto:atkamat1204@gmail.com"
+                  className="text-ink font-bold hover:text-lime-muted underline"
+                >
+                  atkamat1204@gmail.com
+                </a>
+              </div>
               <div className="flex items-center justify-between">
-                <span className="text-muted uppercase tracking-wider">DELIVERY SPRINT</span>
-                <span className="text-ink font-bold">7–10 Business Days</span>
+                <span className="text-muted uppercase tracking-wider">TIMELINE</span>
+                <span className="text-ink font-bold">Agreed in writing</span>
               </div>
             </div>
 
