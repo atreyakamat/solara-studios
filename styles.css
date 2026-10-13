@@ -498,3 +498,13 @@ footer.f a{color:var(--ink)}
 .seal .wax{position:relative;z-index:2}
 /* keep the floating dock clear of the end of the page */
 body:has(.dock){padding-bottom:86px}
+/* hero buttons: the plate is scaled by --u, so the row must scale with it
+   instead of using the page-level .hrow margins, which pushed the pair down
+   onto the engraved steps and wrapped them onto two lines */
+.hero-in .hrow{display:flex;gap:calc(var(--u) * 8);justify-content:center;flex-wrap:nowrap;
+  margin-top:calc(var(--u) * 13)}
+.hero-in .hrow .btn{margin-top:0;white-space:nowrap;
+  padding:max(8px,calc(var(--u) * 8)) max(12px,calc(var(--u) * 14));
+  font-size:max(11px,calc(var(--u) * 11.5))}
+.hero-in .btn.line{background:transparent;color:var(--pi);border-color:var(--pi)}
+@media (max-width:700px){.hero-in .hrow{flex-wrap:wrap;gap:calc(var(--u) * 7)}}
