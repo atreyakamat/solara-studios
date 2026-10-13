@@ -6,7 +6,7 @@
 
   // gentle scroll reveal (skipped for reduced motion)
   var rm=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var els=document.querySelectorAll(".head,.pc,.item,.fact,.pr2>div,ol.steps li,.cta,.wc,.founder,.prot>div,.statement");
+  var els=document.querySelectorAll(".head,.pc,.item,.fact,.pr2>div,ol.steps li,.cta,.wc,.gc,.founder,.prot>div,.statement");
   if(!rm&&"IntersectionObserver" in window){
     var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target);}});},{threshold:.12});
     els.forEach(function(el){el.classList.add("rv");io.observe(el);});
