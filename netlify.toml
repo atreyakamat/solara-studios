@@ -17,6 +17,6 @@
     Cache-Control = "public, max-age=86400"
 
 [[headers]]
-  for = "/og.png"
+  for = "/*.png"
   [headers.values]
     Cache-Control = "public, max-age=86400"
