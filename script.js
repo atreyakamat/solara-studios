@@ -109,7 +109,7 @@
   if(dock){
     var sf=null,tick=function(){
       if(sf)return;
-      sf=requestAnimationFrame(function(){sf=null;dock.classList.toggle("up",window.pageYOffset>420);});
+      sf=requestAnimationFrame(function(){sf=null;/* short pages never reach 420, so show the dock there straight away */var short=document.documentElement.scrollHeight-window.innerHeight<420;dock.classList.toggle("up",short||window.pageYOffset>420);});
     };
     window.addEventListener("scroll",tick,{passive:true});tick();
     var tp=dock.querySelector(".top");
