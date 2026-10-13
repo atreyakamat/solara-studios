@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://solara.atreyakamat.dev/sitemap.xml
