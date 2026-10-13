@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en-IN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Casa Azulejo, Assagao | Sample site by Solara Studios</title>
+<meta name="description" content="Casa Azulejo is a sample one-page website by Solara Studios: a three-room Portuguese-Goan homestay in Assagao, with WhatsApp booking, an enquiry form, map and reviews.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Casa Azulejo, Assagao | Sample ₹2,500 site by Solara Studios"><meta property="og:description" content="What a ₹2,500 Digital Start page looks like for a Goan homestay."><meta property="og:type" content="website">
+<meta name="theme-color" content="#1B3A8C">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap">
+<style>
+:root{
+  --lime:#FBF6EA; --lime2:#F3EAD3; --ink:#1A2347; --muted:#5A607E; --line:#E3D7BA;
+  --azul:#1B3A8C; --azul2:#2F55C4; --ochre:#E3A72F; --ochre-soft:#F6DFA4; --laterite:#A8442A; --palm:#2F6B4A; --bougain:#C2357A;
+  --card:#FFFDF7; --onazul:#FBF6EA;
+  --serif:"Newsreader","Iowan Old Style",Georgia,serif; --sans:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --lime:#0B1230; --lime2:#121B45; --ink:#F3EEDF; --muted:#B5B9D2; --line:#26305F; --card:#121B45;
+  --azul:#8FA6FF; --azul2:#B3C2FF; --ochre:#F2C14E; --ochre-soft:#3A3216; --laterite:#E58A6C; --palm:#7CC49A; --bougain:#F07AB3; --onazul:#0B1230; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --lime:#0B1230; --lime2:#121B45; --ink:#F3EEDF; --muted:#B5B9D2; --line:#26305F; --card:#121B45;
+  --azul:#8FA6FF; --azul2:#B3C2FF; --ochre:#F2C14E; --ochre-soft:#3A3216; --laterite:#E58A6C; --palm:#7CC49A; --bougain:#F07AB3; --onazul:#0B1230; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--lime);color:var(--ink);font:19px/1.6 var(--serif)}
+img,svg{max-width:100%;display:block}
+a{color:var(--azul)}
+:focus-visible{outline:3px solid var(--ochre);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1120px;margin-inline:auto;padding-inline:20px}
+h1,h2,h3{font-weight:400;line-height:1.08;margin:0;letter-spacing:-.015em;text-wrap:balance}
+h2{font-size:clamp(1.9rem,4.4vw,3rem)}
+h3{font-size:1.45rem}
+p{margin:0}
+em{font-style:italic;color:var(--azul)}
+.kicker{font:600 .74rem var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--laterite);display:flex;gap:12px;align-items:center}
+.kicker::before{content:"";width:30px;height:1px;background:currentColor}
+.lede{color:var(--muted);font-size:1.12rem;max-width:60ch}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--azul);color:var(--onazul);padding:14px 24px;border-radius:999px;text-decoration:none;font:600 .95rem var(--sans);border:1.5px solid var(--azul);cursor:pointer}
+.btn:hover{filter:brightness(1.1)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn.wa{background:#1F8A4C;border-color:#1F8A4C;color:#fff}
+.row{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+
+/* sample ribbon */
+.ribbon{background:var(--ink);color:var(--lime);font:500 .85rem/1.4 var(--sans);text-align:center;padding:9px 16px}
+.ribbon a{color:var(--ochre)}
+
+/* azulejo band, reused as a divider */
+.tiles{height:44px;background-color:var(--lime2);background-image:var(--tile);background-size:44px 44px;border-block:2px solid var(--azul)}
+:root{--tile:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'%3E%3Crect width='44' height='44' fill='%23FBF6EA'/%3E%3Cg fill='none' stroke='%231B3A8C' stroke-width='1.6'%3E%3Cpath d='M22 3 41 22 22 41 3 22Z'/%3E%3Ccircle cx='22' cy='22' r='6'/%3E%3Cpath d='M0 0q11 11 0 22M44 0q-11 11 0 22M0 44q11-11 0-22M44 44q-11-11 0-22'/%3E%3C/g%3E%3Cg fill='%231B3A8C'%3E%3Ccircle cx='22' cy='22' r='2.4'/%3E%3Cpath d='M22 9l2 4h-4zM22 35l2-4h-4zM9 22l4 2v-4zM35 22l-4 2v-4z'/%3E%3C/g%3E%3C/svg%3E")}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--tile:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'%3E%3Crect width='44' height='44' fill='%23121B45'/%3E%3Cg fill='none' stroke='%238FA6FF' stroke-width='1.6'%3E%3Cpath d='M22 3 41 22 22 41 3 22Z'/%3E%3Ccircle cx='22' cy='22' r='6'/%3E%3Cpath d='M0 0q11 11 0 22M44 0q-11 11 0 22M0 44q11-11 0-22M44 44q-11-11 0-22'/%3E%3C/g%3E%3Cg fill='%23F2C14E'%3E%3Ccircle cx='22' cy='22' r='2.4'/%3E%3Cpath d='M22 9l2 4h-4zM22 35l2-4h-4zM9 22l4 2v-4zM35 22l-4 2v-4z'/%3E%3C/g%3E%3C/svg%3E")}}
+
+/* header */
+header.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:18px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+.brand .mark{width:40px;height:40px;flex:none}
+.brand b{font-weight:500;font-size:1.35rem;display:block;line-height:1}
+.brand small{font:600 .68rem var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+nav.main{display:flex;gap:24px;align-items:center}
+nav.main a{font:500 .92rem var(--sans);color:var(--ink);text-decoration:none}
+nav.main a:hover{color:var(--azul);text-decoration:underline;text-underline-offset:6px}
+nav.main a.btn{color:var(--onazul);text-decoration:none}
+@media (max-width:760px){nav.main a:not(.btn){display:none}nav.main a.btn{padding:11px 18px}.brand small{letter-spacing:.08em;white-space:nowrap}}
+@media (max-width:400px){.brand small{display:none}}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding-block:28px 64px}
+.hero h1{font-size:clamp(2.6rem,6.4vw,4.6rem)}
+.hero h1 .pt{display:block;font-size:.42em;font-style:italic;color:var(--laterite);letter-spacing:0;margin-bottom:10px}
+.hero .facts{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:22px;padding:0;list-style:none;font:500 .9rem var(--sans);color:var(--muted)}
+.hero .facts li::before{content:"✦ ";color:var(--ochre)}
+.house{border-radius:220px 220px 6px 6px;overflow:hidden;border:2px solid var(--azul);box-shadow:0 0 0 8px var(--lime),0 0 0 10px var(--azul)}
+@media (max-width:860px){.hero{grid-template-columns:1fr;gap:36px}.house{max-width:440px;margin-inline:auto;width:100%}}
+
+/* sections */
+section.s{padding-block:76px}
+.head{display:grid;gap:14px;margin-bottom:38px}
+.alt{background:var(--lime2)}
+
+/* rooms */
+.rooms{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.room{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
+.room .ph{aspect-ratio:4/3;display:grid;place-items:center;position:relative}
+.room .ph span{position:absolute;bottom:10px;left:12px;font:600 .66rem var(--sans);letter-spacing:.14em;text-transform:uppercase;background:var(--lime);color:var(--muted);padding:4px 8px;border-radius:999px}
+.room .bd{padding:20px 22px 24px;display:grid;gap:8px;flex:1}
+.room .pr{font:600 1rem var(--sans);color:var(--laterite)}
+.room ul{margin:4px 0 0;padding-left:18px;color:var(--muted);font-size:.98rem}
+@media (max-width:900px){.rooms{grid-template-columns:1fr}}
+
+/* susegad strip */
+.morning{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.m{border-top:2px solid var(--azul);padding-top:14px}
+.m b{font:600 .78rem var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--azul)}
+.m p{margin-top:6px;color:var(--muted);font-size:1rem}
+@media (max-width:860px){.morning{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.morning{grid-template-columns:1fr}}
+
+/* nearby */
+.near{display:grid;grid-template-columns:repeat(2,1fr);gap:0 40px;list-style:none;padding:0;margin:0}
+.near li{display:flex;justify-content:space-between;gap:14px;padding:14px 0;border-bottom:1px dashed var(--line)}
+.near small{font:600 .82rem var(--sans);color:var(--laterite);white-space:nowrap}
+@media (max-width:700px){.near{grid-template-columns:1fr}}
+
+/* reviews */
+.rev{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.q{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:24px;position:relative}
+.q::before{content:"“";position:absolute;top:-6px;right:18px;font-size:4.4rem;color:var(--ochre);line-height:1}
+.q p{font-style:italic}
+.q cite{display:block;margin-top:14px;font:600 .8rem var(--sans);color:var(--muted);font-style:normal}
+.stars{color:var(--ochre);letter-spacing:2px;font-size:.95rem}
+@media (max-width:900px){.rev{grid-template-columns:1fr}}
+
+/* stay + map */
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.map{border:2px solid var(--azul);border-radius:6px;overflow:hidden;aspect-ratio:4/3;background:var(--lime2)}
+.map iframe{width:100%;height:100%;border:0}
+dl.info{display:grid;grid-template-columns:auto 1fr;gap:10px 22px;margin:0}
+dl.info dt{font:600 .8rem var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:4px}
+dl.info dd{margin:0}
+@media (max-width:860px){.visit{grid-template-columns:1fr}}
+
+/* form */
+form{display:grid;grid-template-columns:1fr 1fr;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:28px}
+form .full{grid-column:1/-1}
+label{display:grid;gap:6px;font:600 .85rem var(--sans)}
+input,select,textarea{font:400 1rem var(--sans);color:var(--ink);background:var(--lime);border:1px solid var(--line);border-radius:4px;padding:12px 14px;width:100%}
+textarea{min-height:110px;resize:vertical}
+.hp{position:absolute;left:-9999px}
+.note{font:500 .85rem var(--sans);color:var(--muted)}
+#ok{display:none;background:var(--ochre-soft);border-left:4px solid var(--ochre);padding:14px 18px;border-radius:4px;font:500 .95rem var(--sans)}
+@media (max-width:640px){form{grid-template-columns:1fr;padding:20px}}
+
+/* footer */
+footer{background:var(--azul);color:var(--onazul);padding-block:44px 90px}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) footer{background:#121B45;color:var(--ink)}}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:end}
+footer a{color:inherit}
+.solara{background:var(--ochre);color:#1A2347;border-radius:6px;padding:18px 22px;max-width:440px;font:500 .95rem/1.5 var(--sans)}
+.solara a{color:#1A2347;font-weight:600}
+
+/* floating whatsapp */
+.fab{position:fixed;right:18px;bottom:18px;z-index:20;width:58px;height:58px;border-radius:50%;background:#1F8A4C;display:grid;place-items:center;box-shadow:0 8px 22px rgba(0,0,0,.25)}
+.fab svg{width:30px;height:30px;fill:#fff}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);opacity:0;background:var(--ink);color:var(--lime);font:500 .9rem var(--sans);padding:12px 18px;border-radius:8px;max-width:min(92vw,420px);text-align:center;transition:.25s;pointer-events:none;z-index:30}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* svg art tokens */
+.sky{fill:#F6DFA4}.sun{fill:#E3A72F}.hill{fill:#2F6B4A;opacity:.35}
+.wall{fill:#E8B53C}.wall2{fill:#D99E25}.trim{fill:#FBF6EA}.ln{stroke:#1A2347;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.roof{fill:#B85C38}.roofln{stroke:#8A3F22;stroke-width:1.4}.shut{fill:#1B3A8C}.shell{fill:#FBF6EA;opacity:.85}.ground{fill:#A8442A}.step{fill:#C9B48A}
+.palm{fill:#2F6B4A}.trunk{stroke:#6B4A2B;stroke-width:6;fill:none;stroke-linecap:round}.bg{fill:#C2357A}.leaf{fill:#3F8A5C}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  .sky{fill:#16216A}.sun{fill:#F2C14E}.hill{fill:#0B1230;opacity:.6}.wall{fill:#C99528}.wall2{fill:#AD7F1E}.trim{fill:#E9E2CF}.ln{stroke:#0B1230}.ground{fill:#5A2A1B}.step{fill:#6E6248}}}
+:root[data-theme="dark"] .sky{fill:#16216A}
+@media (prefers-reduced-motion: no-preference){.sway{transform-origin:330px 330px;animation:sway 6s ease-in-out infinite alternate}@keyframes sway{to{transform:rotate(2.5deg)}}}
+</style></head>
+<body>
+<div class="ribbon">This is a <strong>sample website</strong> made by Solara Studios to show what a ₹2,500 Digital Start page looks like. Casa Azulejo is fictional. <a href="../contact.html?plan=Digital+Start">Get one for your business →</a></div>
+
+<header class="top wrap">
+  <a class="brand" href="#top" aria-label="Casa Azulejo, home">
+    <svg class="mark" viewBox="0 0 40 40" aria-hidden="true"><rect x="1" y="1" width="38" height="38" rx="4" fill="#1B3A8C"/><path d="M20 5 35 20 20 35 5 20Z" fill="none" stroke="#FBF6EA" stroke-width="2"/><circle cx="20" cy="20" r="5" fill="#E3A72F"/><path d="M1 1q9 9 0 19M39 1q-9 9 0 19M1 39q9-9 0-19M39 39q-9-9 0-19" fill="none" stroke="#FBF6EA" stroke-width="1.6"/></svg>
+    <span><b>Casa Azulejo</b><small>Homestay · Assagao, Goa</small></span>
+  </a>
+  <nav class="main" aria-label="Main"><a href="#rooms">Rooms</a><a href="#susegad">Your day</a><a href="#visit">Find us</a><a class="btn" href="#enquire">Check dates</a></nav>
+</header>
+
+<main id="top">
+<section class="hero wrap">
+  <div>
+    <span class="kicker">Since 1886 · Three rooms · Assagao</span>
+    <h1><span class="pt">Bem-vindo, welcome home.</span>A Portuguese-Goan house with blue tiles, a long <em>balcão</em> and nowhere to rush.</h1>
+    <p class="lede" style="margin-top:20px">Casa Azulejo is our family home, restored room by room. Wake up to the church bell from St Cajetan's, eat poi and chorizo on the balcão, and be at Anjuna or Vagator in fifteen minutes.</p>
+    <div class="row">
+      <a class="btn wa" href="#enquire" data-wa><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>WhatsApp us</a>
+      <a class="btn ghost" href="#rooms">See the rooms</a>
+    </div>
+    <ul class="facts"><li>4.9 on Google · 212 reviews</li><li>Breakfast included</li><li>Free parking for scooters</li></ul>
+  </div>
+
+  <div class="house">
+    <svg viewBox="0 0 440 500" role="img" aria-label="Illustration of a yellow Portuguese-Goan house with a red Mangalore-tiled roof, blue shutters, oyster-shell windows, a balcão porch, a palm tree and bougainvillea">
+      <rect class="sky" width="440" height="500"/>
+      <circle class="sun" cx="350" cy="92" r="38"/>
+      <path class="hill" d="M0 300C80 250 160 280 230 255S380 230 440 262V500H0Z"/>
+      <!-- roof -->
+      <path class="roof" d="M40 216 220 132 400 216Z"/>
+      <g class="roofln"><path d="M70 202H370M100 188H340M130 174H310M160 160H280M190 146H250"/></g>
+      <path class="ln" d="M40 216 220 132 400 216"/>
+      <!-- facade -->
+      <rect class="wall" x="62" y="216" width="316" height="196"/>
+      <rect class="wall2" x="62" y="216" width="316" height="14"/>
+      <!-- pilasters -->
+      <g class="trim"><rect x="62" y="216" width="14" height="196"/><rect x="364" y="216" width="14" height="196"/><rect x="213" y="216" width="14" height="196"/></g>
+      <!-- gable ornament -->
+      <circle cx="220" cy="186" r="14" class="trim"/><path d="M220 174v24M208 186h24" stroke="#1B3A8C" stroke-width="2.4"/>
+      <!-- windows with shell panes and blue shutters -->
+      <g>
+        <rect class="shut" x="92" y="244" width="16" height="64"/><rect class="shut" x="176" y="244" width="16" height="64"/>
+        <path class="trim" d="M108 308V262a26 26 0 0 1 68 0v46Z"/>
+        <g class="shell" fill="none"><path d="M114 270h56M114 282h56M114 294h56M126 256v52M142 252v56M158 256v52" stroke="#1B3A8C" stroke-width="1.4"/></g>
+        <rect class="shut" x="248" y="244" width="16" height="64"/><rect class="shut" x="332" y="244" width="16" height="64"/>
+        <path class="trim" d="M264 308V262a26 26 0 0 1 68 0v46Z"/>
+        <g fill="none"><path d="M270 270h56M270 282h56M270 294h56M282 256v52M298 252v56M314 256v52" stroke="#1B3A8C" stroke-width="1.4"/></g>
+      </g>
+      <!-- balcão: steps, seats and door -->
+      <rect class="trim" x="62" y="350" width="316" height="10"/>
+      <rect class="trim" x="84" y="360" width="100" height="22" rx="3"/><rect class="trim" x="256" y="360" width="100" height="22" rx="3"/>
+      <path d="M84 382h100M256 382h100" stroke="#1B3A8C" stroke-width="3"/>
+      <path class="shut" d="M196 412V340a24 24 0 0 1 48 0v72Z"/>
+      <path class="ln" d="M220 318v94" stroke="#FBF6EA" />
+      <rect class="step" x="176" y="412" width="88" height="12"/><rect class="step" x="164" y="424" width="112" height="12"/>
+      <!-- azulejo name tile -->
+      <rect x="196" y="230" width="48" height="20" fill="#FBF6EA" stroke="#1B3A8C" stroke-width="1.6"/><text x="220" y="244" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#1B3A8C">1886</text>
+      <!-- bougainvillea -->
+      <g class="bg"><circle cx="70" cy="226" r="10"/><circle cx="84" cy="220" r="9"/><circle cx="58" cy="240" r="9"/><circle cx="72" cy="244" r="7"/><circle cx="50" cy="262" r="8"/><circle cx="62" cy="276" r="6"/></g>
+      <g class="leaf"><circle cx="92" cy="232" r="4"/><circle cx="46" cy="250" r="4"/><circle cx="56" cy="290" r="4"/></g>
+      <!-- palm -->
+      <g transform="translate(58 0)"><g class="sway"><path class="trunk" d="M372 470C366 400 352 340 330 300"/>
+        <g class="palm"><path d="M330 300c-30-20-70-18-92 4 26-6 56-4 92-4Z"/><path d="M330 300c-12-36-44-58-78-56 24 12 48 30 78 56Z"/><path d="M330 300c10-38 40-60 76-58-26 12-50 32-76 58Z"/><path d="M330 300c34-14 70-6 92 18-28-10-58-14-92-18Z"/><path d="M330 300c-4-26 2-48 18-64-6 20-10 40-18 64Z"/></g>
+        <circle cx="328" cy="306" r="5" fill="#6B4A2B"/><circle cx="337" cy="308" r="5" fill="#6B4A2B"/></g></g>
+      <!-- laterite wall and ground -->
+      <rect class="ground" y="436" width="440" height="64"/>
+      <g stroke="#8A3F22" stroke-width="1.2" opacity=".7"><path d="M0 452h440M0 470h440M0 488h440M40 436v16M110 436v16M180 436v16M260 436v16M330 436v16M400 436v16M75 452v18M145 452v18M215 452v18M295 452v18M365 452v18"/></g>
+    </svg>
+  </div>
+</section>
+
+<div class="tiles" role="presentation"></div>
+
+<section class="s wrap" id="rooms">
+  <div class="head"><span class="kicker">Os quartos · The rooms</span><h2>Three rooms, each named for <em>its colour</em></h2><p class="lede">High ceilings, old teak, handmade tiles and a ceiling fan that has seen a few monsoons. Every room has air conditioning, an attached bath with hot water, and Wi-Fi that works on the balcão.</p></div>
+  <div class="rooms">
+    <article class="room">
+      <div class="ph" style="background:#1B3A8C"><svg viewBox="0 0 120 90" width="120" aria-hidden="true"><path d="M30 80V40a30 30 0 0 1 60 0v40Z" fill="#FBF6EA"/><path d="M36 50h48M36 62h48M60 16v64" stroke="#1B3A8C" stroke-width="2"/></svg><span>Your photo here</span></div>
+      <div class="bd"><h3>Quarto Azul</h3><p class="pr">₹4,200 a night · 2 guests</p><p>Our coolest room, wrapped in blue-and-white azulejos from a workshop in Panjim. Looks out on the mango tree.</p><ul><li>Queen bed, writing desk</li><li>Garden-facing window seat</li></ul></div>
+    </article>
+    <article class="room">
+      <div class="ph" style="background:#E3A72F"><svg viewBox="0 0 120 90" width="120" aria-hidden="true"><circle cx="60" cy="44" r="22" fill="#FBF6EA"/><path d="M60 10v10M60 68v10M26 44h10M84 44h10" stroke="#FBF6EA" stroke-width="3"/></svg><span>Your photo here</span></div>
+      <div class="bd"><h3>Quarto Amarelo</h3><p class="pr">₹3,800 a night · 2 guests</p><p>Sun-yellow walls and oyster-shell windows that turn the afternoon light soft and gold.</p><ul><li>Twin or double beds</li><li>Opens onto the inner courtyard</li></ul></div>
+    </article>
+    <article class="room">
+      <div class="ph" style="background:#A8442A"><svg viewBox="0 0 120 90" width="120" aria-hidden="true"><path d="M14 46 60 18l46 28Z" fill="#FBF6EA"/><rect x="26" y="46" width="68" height="34" fill="none" stroke="#FBF6EA" stroke-width="3"/><path d="M34 66h52" stroke="#FBF6EA" stroke-width="3"/></svg><span>Your photo here</span></div>
+      <div class="bd"><h3>Suite do Balcão</h3><p class="pr">₹5,500 a night · up to 4 guests</p><p>The front room, with its own doors onto the balcão. Big enough for a family, with a daybed for the kids.</p><ul><li>King bed plus daybed</li><li>Private sit-out on the balcão</li></ul></div>
+    </article>
+  </div>
+  <p class="note" style="margin-top:18px">Prices include breakfast and taxes. 15% off stays of five nights or more, June to September.</p>
+</section>
+
+<div class="tiles" role="presentation"></div>
+
+<section class="s alt" id="susegad"><div class="wrap">
+  <div class="head"><span class="kicker">Susegad</span><h2>A day at Casa Azulejo, <em>at Goa's pace</em></h2></div>
+  <div class="morning">
+    <div class="m"><b>7 am</b><p>The poder's horn comes down the lane. Fresh poi and kakon on the breakfast table, with tea or Goan coffee.</p></div>
+    <div class="m"><b>10 am</b><p>Scooter to Vagator, or a slow walk to St Cajetan's and the paddy fields behind it.</p></div>
+    <div class="m"><b>4 pm</b><p>Back for a nap under the fan, then bebinca and cutlets on the balcão while the light goes gold.</p></div>
+    <div class="m"><b>8 pm</b><p>Dinner in Assagao's cafés, five minutes away. Ask us which ones the locals actually go to.</p></div>
+  </div>
+</div></section>
+
+<section class="s wrap">
+  <div class="head"><span class="kicker">Por perto · Nearby</span><h2>Close to everything, <em>away from the noise</em></h2></div>
+  <ul class="near">
+    <li><span>St Cajetan's Church, Assagao</span><small>5 min walk</small></li>
+    <li><span>Anjuna Wednesday flea market</span><small>10 min</small></li>
+    <li><span>Vagator Beach and Chapora Fort</span><small>15 min</small></li>
+    <li><span>Mapusa Friday market</span><small>15 min</small></li>
+    <li><span>Siolim and the Chapora river</span><small>15 min</small></li>
+    <li><span>Mopa airport (GOX)</span><small>40 min</small></li>
+  </ul>
+</section>
+
+<section class="s alt"><div class="wrap">
+  <div class="head"><span class="kicker">Guests say</span><h2>What people write <em>after they leave</em></h2><p class="note">Sample reviews for this demo. On your site, these come from your real Google reviews.</p></div>
+  <div class="rev">
+    <figure class="q" style="margin:0"><div class="stars" aria-label="5 out of 5">★★★★★</div><p>"Felt like staying with family. Aunty's prawn curry rice on our last night was the best meal of the trip."</p><cite>Meera, Bengaluru · Google</cite></figure>
+    <figure class="q" style="margin:0"><div class="stars" aria-label="5 out of 5">★★★★★</div><p>"The blue room is beautiful and so quiet. Close to Anjuna but you'd never know it at night."</p><cite>Tom, Manchester · Google</cite></figure>
+    <figure class="q" style="margin:0"><div class="stars" aria-label="5 out of 5">★★★★★</div><p>"Booked on WhatsApp in five minutes. They sent the location pin and a scooter contact the same day."</p><cite>Rhea, Pune · Google</cite></figure>
+  </div>
+  <p style="margin-top:22px"><a href="#" data-sample="This link opens your Google reviews page.">Read all 212 reviews on Google →</a></p>
+</div></section>
+
+<section class="s wrap" id="visit">
+  <div class="visit">
+    <div>
+      <div class="head" style="margin-bottom:24px"><span class="kicker">Find us</span><h2>Down the lane from <em>St Cajetan's</em></h2></div>
+      <dl class="info">
+        <dt>Address</dt><dd>House 214, Bhatti Vaddo, Assagao, Bardez, Goa 403507 <span class="note">(sample)</span></dd>
+        <dt>Check-in</dt><dd>From 1 pm. Check-out by 11 am.</dd>
+        <dt>Getting here</dt><dd>40 min from Mopa, 55 min from Dabolim, 15 min from Thivim station.</dd>
+        <dt>House rules</dt><dd>Quiet after 10:30 pm. Pets welcome in the Suite with notice.</dd>
+        <dt>Pay</dt><dd>UPI or bank transfer. 30% advance to confirm.</dd>
+      </dl>
+    </div>
+    <div class="map"><iframe title="Map of Assagao, Goa" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Assagao%2C%20Goa&t=&z=14&ie=UTF8&iwloc=&output=embed"></iframe></div>
+  </div>
+</section>
+
+<div class="tiles" role="presentation"></div>
+
+<section class="s wrap" id="enquire">
+  <div class="head"><span class="kicker">Check dates</span><h2>Tell us when you're coming. <em>We reply within the hour.</em></h2><p class="lede">Send this form and it lands straight in our email, or tap WhatsApp if that's quicker.</p></div>
+  <form name="casa-azulejo-demo" method="POST" data-netlify="true" netlify-honeypot="company" id="enq">
+    <input type="hidden" name="form-name" value="casa-azulejo-demo">
+    <p class="hp"><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
+    <label>Your name<input name="name" required autocomplete="name"></label>
+    <label>Phone or WhatsApp<input name="phone" type="tel" required autocomplete="tel"></label>
+    <label>Check-in<input name="checkin" type="date" required></label>
+    <label>Check-out<input name="checkout" type="date" required></label>
+    <label>Room<select name="room"><option>Any room</option><option>Quarto Azul</option><option>Quarto Amarelo</option><option>Suite do Balcão</option></select></label>
+    <label>Guests<select name="guests"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></label>
+    <label class="full">Anything we should know?<textarea name="message" placeholder="Arrival time, food preferences, a birthday..."></textarea></label>
+    <div class="full" style="display:flex;flex-wrap:wrap;gap:12px;align-items:center"><button class="btn" type="submit">Send enquiry</button><a class="btn wa" href="#" data-wa>Or WhatsApp us</a></div>
+    <p id="ok" class="full" role="status">Thank you! This is the sample site, so nothing was booked. On your own site, this enquiry would now be in your inbox.</p>
+  </form>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <div><p style="font-size:1.5rem">Casa Azulejo</p><p class="note" style="color:inherit;opacity:.85">Assagao, Goa · Até logo, see you soon.</p></div>
+  <div class="solara">Like this page? Solara Studios builds one for your business, with your photos, WhatsApp and Google reviews, in about four days for <strong>₹2,500</strong>. <a href="../contact.html?plan=Digital+Start">Start yours →</a></div>
+</div></footer>
+
+<a class="fab" href="#" data-wa aria-label="WhatsApp Casa Azulejo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg></a>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var t=document.getElementById("toast"),tm;
+  function say(msg){t.textContent=msg;t.classList.add("on");clearTimeout(tm);tm=setTimeout(function(){t.classList.remove("on")},3200);}
+  document.querySelectorAll("[data-wa]").forEach(function(a){a.addEventListener("click",function(e){e.preventDefault();say("Sample site: on your page, this opens a WhatsApp chat with your number, with a ready-typed message.");});});
+  document.querySelectorAll("[data-sample]").forEach(function(a){a.addEventListener("click",function(e){e.preventDefault();say("Sample site: "+a.getAttribute("data-sample"));});});
+  var f=document.getElementById("enq");
+  f.addEventListener("submit",function(e){
+    e.preventDefault();
+    if(!f.checkValidity()){f.reportValidity();return;}
+    fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams(new FormData(f)).toString()}).catch(function(){}).finally(function(){document.getElementById("ok").style.display="block";});
+  });
+})();
+</script>
+</body></html>
