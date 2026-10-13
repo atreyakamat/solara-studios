@@ -1,4 +1,6 @@
 [build]
+  # Static site: override any build command saved in the Netlify UI (the old React build no longer exists).
+  command = "echo 'Static site: nothing to build'"
   publish = "."
 
 [[headers]]
