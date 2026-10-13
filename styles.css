@@ -508,3 +508,10 @@ body:has(.dock){padding-bottom:86px}
   font-size:max(11px,calc(var(--u) * 11.5))}
 .hero-in .btn.line{background:transparent;color:var(--pi);border-color:var(--pi)}
 @media (max-width:700px){.hero-in .hrow{flex-wrap:wrap;gap:calc(var(--u) * 7)}}
+/* on a phone the plate is cropped to 4/5.1, so --u grows and the button row
+   nearly spans the arch; pull the text block in so it clears the columns */
+@media (max-width:700px){
+  .hero-in{width:calc(var(--u) * 292)}
+  .hero-in .hrow .btn{padding:max(9px,calc(var(--u) * 7)) max(12px,calc(var(--u) * 11));
+    font-size:max(11px,calc(var(--u) * 10.5))}
+}
