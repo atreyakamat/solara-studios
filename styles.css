@@ -250,3 +250,251 @@ footer.f a{color:var(--ink)}
 .vnote{margin-top:26px;color:var(--muted);font-size:.98rem;max-width:70ch}
 @media (max-width:900px){.vals{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.vals{grid-template-columns:1fr}}
+
+/* ==========================================================================
+   Cobalt toile: four palettes, 3D motion, bookmark shelf, toile plates,
+   ledger, almanac seal and the floating dock.
+   Palette is set as data-pal on <html>; each palette carries its light
+   values, a matching --d-* dark set, and --p* colours for text that sits on
+   the engraved plate (those must not flip in dark mode, because the plate
+   itself is an image).
+   ========================================================================== */
+:root,:root[data-pal="cobalt"]{
+  --paper:#F6F2EA;--paper2:#EEE8DB;--ink:#141B4D;--muted:#4E557F;--line:#D8D0BF;
+  --blue:#2238C4;--link:#2238C4;--btn:#2238C4;--onbtn:#F6F2EA;--plate:#2238C4;
+  --heroRot:0deg;--heroSat:1;--pi:#141B4D;--pb:#2238C4;--pm:#4E557F;
+  --d-paper:#080D2B;--d-paper2:#0F1844;--d-ink:#EDEFFF;--d-muted:#A9B3DE;--d-line:#25306B;
+  --d-blue:#5B74F4;--d-link:#93A5FF;--d-btn:#2B45D6;--d-onbtn:#FFFFFF;--d-plate:#16226B;
+}
+:root[data-pal="indigo"]{
+  --paper:#F4EFE1;--paper2:#E9E1CD;--ink:#1A2340;--muted:#4C5578;--line:#D2C8B1;
+  --blue:#35468B;--link:#2E3C7C;--btn:#35468B;--onbtn:#F4EFE1;--plate:#35468B;
+  --heroRot:-6deg;--heroSat:.72;--pi:#1A2340;--pb:#35468B;--pm:#4C5578;
+  --d-paper:#0C1026;--d-paper2:#151B3C;--d-ink:#E9EBFA;--d-muted:#A5ACCE;--d-line:#2A3160;
+  --d-blue:#6E7FC9;--d-link:#9AA7E4;--d-btn:#3B4C96;--d-onbtn:#FFFFFF;--d-plate:#232D5E;
+}
+:root[data-pal="delft"]{
+  --paper:#FBFAF6;--paper2:#EFF1EC;--ink:#14304F;--muted:#42597A;--line:#D1D6D1;
+  --blue:#1F5E96;--link:#1A5488;--btn:#1F5E96;--onbtn:#FBFAF6;--plate:#1F5E96;
+  --heroRot:-28deg;--heroSat:.82;--pi:#14304F;--pb:#1F5E96;--pm:#42597A;
+  --d-paper:#071726;--d-paper2:#0E2438;--d-ink:#E6F0F8;--d-muted:#9DB4CA;--d-line:#1D3A55;
+  --d-blue:#4E97D1;--d-link:#8FC3EA;--d-btn:#1F6EA8;--d-onbtn:#FFFFFF;--d-plate:#123553;
+}
+:root[data-pal="oxblood"]{
+  --paper:#F3EADA;--paper2:#E8DBC5;--ink:#3A1F1B;--muted:#6E4C43;--line:#D6C3A7;
+  --blue:#8C2F28;--link:#8C2F28;--btn:#8C2F28;--onbtn:#F3EADA;--plate:#8C2F28;
+  --heroRot:135deg;--heroSat:1.1;--pi:#3A1F1B;--pb:#8C2F28;--pm:#6E4C43;
+  --d-paper:#1B0F0D;--d-paper2:#2A1714;--d-ink:#F6E8DF;--d-muted:#C9A99D;--d-line:#4A2A24;
+  --d-blue:#C65A4C;--d-link:#E79484;--d-btn:#9E3A31;--d-onbtn:#FFFFFF;--d-plate:#5E201B;
+}
+/* one dark application serves every palette */
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:var(--d-paper);--paper2:var(--d-paper2);--ink:var(--d-ink);--muted:var(--d-muted);
+  --line:var(--d-line);--blue:var(--d-blue);--link:var(--d-link);--btn:var(--d-btn);
+  --onbtn:var(--d-onbtn);--plate:var(--d-plate);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:var(--d-paper);--paper2:var(--d-paper2);--ink:var(--d-ink);--muted:var(--d-muted);
+  --line:var(--d-line);--blue:var(--d-blue);--link:var(--d-link);--btn:var(--d-btn);
+  --onbtn:var(--d-onbtn);--plate:var(--d-plate);color-scheme:dark}
+:root[data-theme="light"]{color-scheme:light}
+
+/* --------------------------------------------------------------- masthead */
+.mast{display:flex;align-items:center;justify-content:space-between;gap:18px;
+  padding-block:9px;border-bottom:1px solid var(--line);
+  font:600 .64rem var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.mast span:nth-child(2){text-align:center}
+.mast b{font-weight:600;color:var(--link)}
+@media (max-width:700px){.mast span:nth-child(2){display:none}}
+
+/* ------------------------------------------------------- 3D motion engine */
+/* JS writes --rx/--ry (degrees) and --mx/--my (sheen position) per card. */
+.tilt{transform:perspective(900px) rotateX(calc(var(--rx,0) * 1deg)) rotateY(calc(var(--ry,0) * 1deg)) translateZ(0);
+  transition:transform .55s cubic-bezier(.2,.7,.2,1),box-shadow .55s cubic-bezier(.2,.7,.2,1);
+  will-change:transform;position:relative}
+.tilt.live{transition:transform .09s linear,box-shadow .3s}
+.tilt.live{box-shadow:0 18px 40px -22px color-mix(in srgb,var(--ink) 55%,transparent)}
+.tilt>*{transform:translateZ(0)}
+.tilt::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;
+  transition:opacity .45s ease;border-radius:inherit;
+  background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),
+    color-mix(in srgb,var(--blue) 16%,transparent),transparent 62%)}
+.tilt.live::after{opacity:1}
+
+/* deeper 3D entrance for revealed blocks, with a short stagger in grids */
+.js .rv{opacity:0;transform:perspective(1000px) translate3d(0,22px,-40px) rotateX(6deg);
+  transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+.vals>.rv:nth-child(2),.goa>.rv:nth-child(2),.wk>.rv:nth-child(2),.prot>.rv:nth-child(2){transition-delay:.08s}
+.vals>.rv:nth-child(3),.goa>.rv:nth-child(3),.wk>.rv:nth-child(3),.prot>.rv:nth-child(3){transition-delay:.16s}
+.vals>.rv:nth-child(4),.goa>.rv:nth-child(4),.wk>.rv:nth-child(4),.prot>.rv:nth-child(4){transition-delay:.24s}
+.wk>.rv:nth-child(5){transition-delay:.32s}.wk>.rv:nth-child(6){transition-delay:.4s}
+
+/* ------------------------------------------------------------------ hero */
+/* perspective() is written into each child's own transform list rather than
+   set on .hero, because .hero carries overflow:hidden, which flattens a
+   preserve-3d group and would cancel the depth. */
+.hero{background:var(--plate)}
+.hero-img{filter:hue-rotate(var(--heroRot)) saturate(var(--heroSat));
+  transform:translate3d(calc(var(--px,0) * -7px),calc(var(--py,0) * -7px),0) scale(1.045);
+  transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.hero.live .hero-img{transition:transform .12s linear}
+.hero .corner{background:var(--plate)}
+.hero-in{color:var(--pi);
+  transform:translateX(-50%) perspective(1400px)
+    translate3d(calc(var(--px,0) * 13px),calc(var(--py,0) * 9px),calc(var(--pz,0) * 60px));
+  transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.hero.live .hero-in{transition:transform .12s linear}
+.hero-in svg{color:var(--pb)}
+.hero-in h1 em{color:var(--pb)}
+.hero-in p{color:var(--pm)}
+.hero-in .btn{background:var(--pb);color:#F6F2EA;border-color:var(--pb)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hero-img{filter:hue-rotate(var(--heroRot)) saturate(var(--heroSat)) brightness(.9)}}
+:root[data-theme="dark"] .hero-img{filter:hue-rotate(var(--heroRot)) saturate(var(--heroSat)) brightness(.9)}
+
+/* lunar phase ornament under the hero, from the reference plates */
+.moons{display:flex;align-items:center;justify-content:center;gap:18px;padding-block:22px;
+  border-bottom:1px solid var(--line)}
+.moons i{width:15px;height:15px;border-radius:50%;border:1.5px solid var(--link);flex:none;display:block}
+.moons i:nth-child(1){background:var(--link)}
+.moons i:nth-child(2){background:linear-gradient(90deg,var(--link) 50%,transparent 50%)}
+.moons i:nth-child(3){background:transparent}
+.moons i:nth-child(4){background:linear-gradient(270deg,var(--link) 50%,transparent 50%)}
+.moons i:nth-child(5){background:var(--link)}
+.moons em{font-style:italic;color:var(--muted);font-size:.98rem;padding-inline:6px}
+
+/* ------------------------------------------------------- bookmark shelf */
+.shelf{perspective:1500px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;align-items:flex-end;margin-bottom:-1px;position:relative;z-index:2}
+.bm{appearance:none;cursor:pointer;background:var(--paper2);color:var(--muted);
+  border:1px solid var(--line);border-bottom-color:transparent;border-radius:3px 3px 0 0;
+  padding:13px 20px 12px;font:600 .8rem var(--sans);letter-spacing:.04em;
+  transform-origin:bottom center;transition:transform .35s cubic-bezier(.2,.7,.2,1),color .3s,background .3s;
+  display:flex;align-items:center;gap:9px}
+.bm::before{content:"";width:9px;height:14px;flex:none;background:var(--line);
+  clip-path:polygon(0 0,100% 0,100% 100%,50% 74%,0 100%);transition:background .3s}
+.bm:hover{transform:perspective(600px) translateY(-3px) rotateX(9deg)}
+.bm[aria-selected="true"]{background:var(--paper);color:var(--link);border-color:var(--ink);
+  border-bottom-color:var(--paper);transform:perspective(600px) translateY(-5px)}
+.bm[aria-selected="true"]::before{background:var(--blue)}
+.leaf{border:1px solid var(--ink);background:var(--paper);padding:34px 30px;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,320px);gap:38px;align-items:start;
+  transform-style:preserve-3d;transform-origin:left center}
+.leaf[hidden]{display:none}
+.leaf h3{font-size:1.75rem;margin-bottom:10px}
+.leaf p{color:var(--muted);font-size:1.04rem;max-width:52ch}
+.leaf ul{margin:0;padding:0;list-style:none;display:grid;gap:7px;font-size:1rem}
+.leaf li::before{content:"\2726  ";color:var(--link);font-size:.7rem}
+.leaf .side{border-left:1px solid var(--line);padding-left:30px}
+.leaf .side h4{font:600 .7rem var(--sans);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 12px}
+.leaf .side p{font-size:.98rem}
+.leaf .side .pill{margin-top:16px}
+.turn{animation:turn .62s cubic-bezier(.2,.7,.2,1) both}
+@keyframes turn{from{opacity:0;transform:perspective(1500px) rotateY(-62deg) translateZ(-70px)}
+  to{opacity:1;transform:perspective(1500px) rotateY(0) translateZ(0)}}
+@media (max-width:860px){.leaf{grid-template-columns:1fr;gap:24px}
+  .leaf .side{border-left:0;border-top:1px solid var(--line);padding:22px 0 0}}
+
+/* ---------------------------------------------------------- toile plates */
+.plates{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;perspective:1300px}
+.plate{background:var(--plate);border-radius:2px;overflow:hidden;position:relative;
+  aspect-ratio:3/4;display:block;border:0}
+.plate svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.plate figcaption{position:absolute;left:0;right:0;bottom:0;padding:12px 14px;
+  background:linear-gradient(transparent,rgba(0,0,0,.62) 55%);
+  color:#F6F2EA;font:600 .7rem var(--sans);letter-spacing:.14em;text-transform:uppercase}
+.plate figcaption b{display:block;font:400 1.05rem var(--serif);letter-spacing:0;text-transform:none;margin-top:3px}
+@media (max-width:860px){.plates{grid-template-columns:1fr 1fr}}
+
+/* ---------------------------------------------- ledger (the offer ladder) */
+.ledhead{display:grid;grid-template-columns:70px minmax(0,1.1fr) minmax(0,1.5fr) 190px;gap:28px;
+  padding-bottom:9px;border-bottom:2px solid var(--ink);
+  font:600 .66rem var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.ledhead span:last-child{text-align:right}
+.led{border-top:0}
+.item{transition:background .35s ease,transform .45s cubic-bezier(.2,.7,.2,1)}
+.item:hover{background:color-mix(in srgb,var(--paper2) 70%,transparent)}
+.item .pr strong{font-variant-numeric:lining-nums tabular-nums}
+.item .sub{font:500 .82rem var(--sans);color:var(--muted);margin-top:6px;display:block}
+.item.up{background:var(--paper2);border-left:3px solid var(--blue);padding-inline:21px}
+.item.add{background:transparent;border-top:1px dashed var(--line)}
+.item .was{display:block;font:500 .8rem var(--sans);color:var(--muted);text-decoration:line-through;
+  margin-bottom:2px}
+.ladder{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px;
+  font:500 .86rem var(--sans);color:var(--muted)}
+.ladder b{color:var(--link);font-weight:600}
+.anchor{border:1px solid var(--line);background:var(--paper2);padding:20px 22px;border-radius:2px;
+  margin-bottom:26px;display:flex;gap:22px;align-items:baseline;flex-wrap:wrap}
+.anchor strong{font-size:1.5rem;font-weight:400;color:var(--link)}
+.anchor p{color:var(--muted);font-size:1rem;max-width:62ch}
+
+/* ---------------------------------------------- almanac strip + wax seal */
+.alm{background:var(--paper2);border:1px solid var(--line);padding:40px 32px;border-radius:2px;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,420px);gap:40px;align-items:center}
+.alm h2{font-size:clamp(1.5rem,3vw,2.1rem);max-width:24ch}
+.alm p{color:var(--muted);font-size:1.02rem;max-width:48ch;margin-top:12px}
+.alm form{display:grid;gap:12px}
+.alm .fr{display:flex;gap:10px;flex-wrap:wrap}
+.alm input{flex:1;min-width:190px}
+.seal{position:relative;display:grid;place-items:center;min-height:132px}
+.seal .wax{width:106px;height:106px;border-radius:50%;background:var(--blue);color:#F6F2EA;
+  display:grid;place-items:center;text-align:center;font:600 .66rem var(--sans);letter-spacing:.16em;
+  text-transform:uppercase;line-height:1.5;opacity:0;transform:scale(.3) rotate(-24deg);
+  box-shadow:0 10px 26px -12px color-mix(in srgb,var(--ink) 70%,transparent)}
+.seal .wax::before{content:"";position:absolute;inset:7px;border:1.5px dashed color-mix(in srgb,#F6F2EA 60%,transparent);border-radius:50%}
+.seal.on .wax{animation:stamp .72s cubic-bezier(.3,1.5,.4,1) forwards}
+@keyframes stamp{0%{opacity:0;transform:scale(.3) rotate(-24deg)}
+  55%{opacity:1;transform:scale(1.14) rotate(5deg)}100%{opacity:1;transform:scale(1) rotate(-6deg)}}
+.alm .msg{font:500 .9rem var(--sans);color:var(--muted);min-height:1.4em}
+@media (max-width:860px){.alm{grid-template-columns:1fr;gap:26px;padding:30px 22px}}
+
+/* ------------------------------------------------------- floating dock */
+.dock{position:fixed;left:50%;bottom:16px;z-index:40;transform:translateX(-50%) translateY(130%);
+  display:flex;align-items:center;gap:6px;padding:8px;border-radius:99px;
+  background:var(--paper);border:1px solid var(--line);
+  box-shadow:0 14px 40px -16px rgba(0,0,0,.4);
+  backdrop-filter:blur(14px);transition:transform .5s cubic-bezier(.2,.9,.25,1)}
+@supports (background:color-mix(in srgb,red 50%,transparent)){
+  .dock{background:color-mix(in srgb,var(--paper) 86%,transparent)}}
+.dock.up{transform:translateX(-50%) translateY(0)}
+.dock .pals{display:flex;gap:4px;padding-right:4px;border-right:1px solid var(--line);margin-right:2px}
+.sw{width:30px;height:30px;border-radius:50%;cursor:pointer;border:1.5px solid var(--line);
+  padding:0;position:relative;transition:transform .3s cubic-bezier(.3,1.4,.4,1)}
+.sw:hover{transform:translateY(-3px) scale(1.08)}
+.sw[aria-pressed="true"]{border-color:var(--ink);transform:scale(1.06)}
+.sw[aria-pressed="true"]::after{content:"";position:absolute;inset:3px;border-radius:50%;
+  border:1.5px solid color-mix(in srgb,#F6F2EA 75%,transparent)}
+.sw[data-p="cobalt"]{background:#2238C4}.sw[data-p="indigo"]{background:#35468B}
+.sw[data-p="delft"]{background:#1F5E96}.sw[data-p="oxblood"]{background:#8C2F28}
+.dock a,.dock .top{display:inline-flex;align-items:center;gap:7px;border-radius:99px;
+  font:600 .82rem var(--sans);text-decoration:none;padding:9px 15px;border:0;cursor:pointer;
+  background:var(--btn);color:var(--onbtn);transition:transform .3s cubic-bezier(.3,1.4,.4,1)}
+.dock .top{background:transparent;color:var(--ink);padding:9px 11px}
+.dock a:hover,.dock .top:hover{transform:translateY(-2px)}
+.dock svg{width:16px;height:16px;flex:none}
+.dock .wa{background:#1F8A4C;color:#fff}
+@media (max-width:620px){.dock{gap:4px;padding:6px;bottom:10px}
+  .dock a span,.dock .lbl{display:none}.dock a{padding:9px 11px}.sw{width:26px;height:26px}}
+
+/* ------------------------------------------------------------- reduced motion */
+@media (prefers-reduced-motion:reduce){
+  .tilt,.tilt.live{transform:none!important;transition:none;box-shadow:none}
+  .tilt::after{display:none}
+  .js .rv{opacity:1;transform:none;transition:none}
+  .hero-img,.hero-in{transform:none;transition:none}
+  .hero-in{transform:translateX(-50%)}
+  .hero-img{transform:scale(1.045)}
+  .bm,.bm:hover,.bm[aria-selected="true"]{transform:none;transition:none}
+  .turn{animation:none}
+  .seal .wax,.seal.on .wax{animation:none;opacity:1;transform:none}
+  .dock{transition:none}.sw:hover,.dock a:hover,.dock .top:hover{transform:none}
+}
+.plate img{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover}
+/* the Almanac seal: an engraved ring that is always there, stamped over on success */
+.seal .ring{position:absolute;inset:0;display:grid;place-items:center;transition:opacity .4s ease}
+.seal .ring svg{width:132px;height:132px;fill:none;stroke:var(--link);stroke-width:1.1;opacity:.62}
+.seal .ring text{font:600 8.5px var(--sans);letter-spacing:.22em;fill:var(--link);stroke:none;opacity:.9}
+.seal.on .ring{opacity:0}
+.seal .wax{position:relative;z-index:2}
+/* keep the floating dock clear of the end of the page */
+body:has(.dock){padding-bottom:86px}
