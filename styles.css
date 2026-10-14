@@ -309,7 +309,10 @@ footer.f a{color:var(--ink)}
   font:600 .64rem var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
 .mast span:nth-child(2){text-align:center}
 .mast b{font-weight:600;color:var(--link)}
-@media (max-width:700px){.mast span:nth-child(2){display:none}}
+@media (max-width:700px){.mast{flex-wrap:wrap;gap:2px 14px}
+  /* the uppercase tracking is wide: let the two remaining items shrink instead of pushing the page 4px sideways */
+  .mast span{min-width:0;overflow-wrap:break-word}
+  .mast span:nth-child(2){display:none}}
 
 /* ------------------------------------------------------- 3D motion engine */
 /* JS writes --rx/--ry (degrees) and --mx/--my (sheen position) per card. */
@@ -416,6 +419,8 @@ footer.f a{color:var(--ink)}
   padding-bottom:9px;border-bottom:2px solid var(--ink);
   font:600 .66rem var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
 .ledhead span:last-child{text-align:right}
+/* below 900px the rows drop to two columns, so the four-column header no longer describes them */
+@media (max-width:900px){.ledhead{display:none}}
 .led{border-top:0}
 .item{transition:background .35s ease,transform .45s cubic-bezier(.2,.7,.2,1)}
 .item:hover{background:color-mix(in srgb,var(--paper2) 70%,transparent)}
