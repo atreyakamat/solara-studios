@@ -1,0 +1,5 @@
+# Pages from the old static site now live as sections of the one-page site.
+/services.html  /#pricing   301
+/contact.html   /#contact   301
+/about.html     /#about     301
+/privacy.html   /#contact   301
