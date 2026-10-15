@@ -87,7 +87,7 @@ export function Pricing() {
             );
           })}
         </div>
-        <p className="fine">Prices in Indian rupees. Your scope is written down and agreed before you pay; nothing is added without asking.</p>
+        <p className="fine">Prices in Indian rupees; dollar figures are for clients abroad. Pay by UPI or bank transfer in India, or international bank transfer from abroad. Your scope is written down and agreed before you pay.</p>
       </div>
     </section>
   );

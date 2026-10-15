@@ -103,33 +103,59 @@ export const servicesCopy = {
   kicker: "Pricing",
   title: "A ledger of *what you pay*",
   intro:
-    "Two lines, both priced up front and agreed in writing before you pay. Nothing hidden, nothing extra unless you ask for it.",
+    "Start with the Business Starter, then grow when the enquiries justify it. Every step is priced up front and agreed in writing before you pay, and nothing you have paid for is thrown away.",
 };
 
+// The ladder, step by step. Scopes follow the studio's pricing doc; the Business
+// Starter and care plan follow the 14 Oct 2026 offer.
 export const services = [
   {
     title: "Business Starter · ₹2,500",
     summary: "Website, starter digital library and posting, done for you.",
     details:
-      "A one-page website for your business, your details organised into a starter digital library, and your Google Business Profile and first posts set up. Paid once, live in about four days.",
-    deliverables: ["One-page website", "Starter digital library", "Google profile and first posts", "WhatsApp booking"],
-    duration: "About 4 days · paid once",
+      "A one-page website from a proven, mobile-first layout, your details organised into a starter digital library, and your Google Business Profile and first posts set up. Comes with the care plan free to start.",
+    deliverables: ["One-page website", "Starter digital library", "Google profile and first posts", "WhatsApp and call buttons", "Enquiry form to email"],
+    duration: "About 4 days · paid upfront",
   },
   {
-    title: "Care Plan · Free to start",
-    summary: "Normally ₹899. Included free when you begin.",
+    title: "Starter Plus · ₹6,999",
+    summary: "Your own domain, business email and more room to show the business.",
     details:
-      "Your care plan starts free with the Business Starter, so updates and checks are covered from day one while you settle in.",
-    deliverables: ["Content updates", "Photo and price changes", "Uptime checks"],
-    duration: "Normally ₹899 · free at the start",
+      "Everything in the Business Starter, plus your own domain (bought at cost, registered in your name), a business email address, up to four sections with a photo gallery, a booking form with an automatic reply and your Google Business Profile tidied up. Two rounds of revisions.",
+    deliverables: ["Own domain", "Business email", "Up to 4 sections and gallery", "Booking form with auto-reply"],
+    duration: "About 1 week · 50% to start, 50% on delivery",
   },
   {
-    title: "Care Plan · ₹799 a year",
-    summary: "Then one simple yearly fee to stay looked after.",
+    title: "Launch · ₹29,999",
+    summary: "A custom landing page designed from scratch around your brand. About $350 abroad.",
     details:
-      "After the free start, the care plan continues for ₹799 for the full year: edits when you need them, regular checks and a person to call when something changes.",
-    deliverables: ["Yearly renewal", "Edits on request", "Speed and uptime checks"],
-    duration: "₹799 · per year",
+      "Where the starters fill a proven layout with your content, Launch is designed from scratch around your brand and offer, with copy guidance, on-page SEO and social previews, deployed on your own domain. One round of revisions.",
+    deliverables: ["Custom design", "Copy guidance", "On-page SEO", "Your own domain"],
+    duration: "About 1 week · deposit, then balance on delivery",
+  },
+  {
+    title: "Growth · ₹69,999",
+    summary: "A custom website and a plan to be found. About $799 abroad.",
+    details:
+      "A custom website of up to five pages with a technical SEO audit and fixes, analytics and enquiry tracking, Google Business Profile guidance, a brand kit and a 30-day content and posting plan. Two rounds of revisions and 14 days of support.",
+    deliverables: ["Up to 5 pages", "Technical SEO", "Analytics and tracking", "Brand kit", "30-day content plan"],
+    duration: "2 to 3 weeks · deposit, then balance on delivery",
+  },
+  {
+    title: "Custom Platform · Quoted",
+    summary: "Bookings, payments, dashboards and full-stack builds.",
+    details:
+      "If you need bookings, payments, accounts or dashboards, it is a custom platform, built the way Agnel Arena and Amthane Valley were. We start with a discovery call, then agree a written scope, milestones and a fixed quote. You own the code at handover.",
+    deliverables: ["Discovery call", "Written scope and fixed quote", "Full-stack build", "Handover documentation"],
+    duration: "Per project · paid by milestone",
+  },
+  {
+    title: "Care Plan · Free, then ₹799 a year",
+    summary: "Normally ₹899. Free to start, then ₹799 for the whole year.",
+    details:
+      "Keeps your site up, current and checked: content, photo and price edits when you need them, uptime and form checks so a broken enquiry form never goes unnoticed, and hosting kept healthy. Free to begin with, then ₹799 a year.",
+    deliverables: ["Edits on request", "Uptime and form checks", "Hosting kept healthy"],
+    duration: "Normally ₹899 · free to start · then ₹799 a year",
   },
 ];
 
