@@ -86,6 +86,10 @@ export function Enquiry() {
                 <span>Plan</span>
                 <select name="plan" defaultValue={initialPlan()}>
                   <option>Business Starter</option>
+                  <option>Starter Plus</option>
+                  <option>Launch</option>
+                  <option>Growth</option>
+                  <option>Custom Platform</option>
                   <option>Care Plan</option>
                   <option>Not sure yet</option>
                 </select>

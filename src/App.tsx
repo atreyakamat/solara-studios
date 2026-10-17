@@ -8,6 +8,7 @@ import { Goa } from "./sections/Goa";
 import { Hero } from "./sections/Hero";
 import { Nav } from "./sections/Nav";
 import { Pricing } from "./sections/Pricing";
+import { Faq } from "./sections/Faq";
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
         <About />
         <Bookmarks />
         <Pricing />
+        <Faq />
         <Goa />
         <ContactBand />
         <Enquiry />
